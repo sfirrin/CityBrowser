@@ -1,0 +1,292 @@
+{{ '{{' }}Weather box    <!-- Infobox begins -->
+| collapsed   =  <!-- Any entry in this line will make the template initially collapsed. Leave blank or remove this line for uncollapsed. -->
+| open        =  <!-- Any entry in this line will make the template permanently open, and remove the hide button. Remove this line for a collapsible table. -->
+| single line =true  <!-- Any entry in this line will display metric and imperial units in the same cell. Leave blank or remove this line for separate table rows. -->
+| location    =GHCN Station {{ climate.station.ghcn_id }} ({{ climate.station.name }})  <!-- Mandatory field, location the climate data was taken, usually an airport. -->
+
+| temperature colour =pastel  <!-- Enter "pastel" for pastel temperature colors, "none" for no colours, remove this line for the standard coloring. -->
+<!-- Record high temperatures -->
+<!-- Note that record temperatures should be used sparingly in main city articles, and should only be used when the data period is of the greatest length possible. -->
+| Jan record high F ={{ climate.record_high.jan }}
+| Feb record high F ={{ climate.record_high.feb }}
+| Mar record high F ={{ climate.record_high.mar }}
+| Apr record high F ={{ climate.record_high.apr }}
+| May record high F ={{ climate.record_high.may }}
+| Jun record high F ={{ climate.record_high.jun }}
+| Jul record high F ={{ climate.record_high.jul }}
+| Aug record high F ={{ climate.record_high.aug }}
+| Sep record high F ={{ climate.record_high.sep }}
+| Oct record high F ={{ climate.record_high.oct }}
+| Nov record high F ={{ climate.record_high.nov }}
+| Dec record high F ={{ climate.record_high.dec }}
+| year record high F ={{ climate.record_high.year }}
+<!-- Average monthly absolute maximum temperatures (that is, on average, the highest temperature to be observed in a month). It is important to note that this data is not very prominent in most climate data archives. -->
+|Jan avg record high F={{ climate.mean_max_high.jan }}
+|Feb avg record high F={{ climate.mean_max_high.feb }}
+|Mar avg record high F={{ climate.mean_max_high.mar }}
+|Apr avg record high F={{ climate.mean_max_high.apr }}
+|May avg record high F={{ climate.mean_max_high.may }}
+|Jun avg record high F={{ climate.mean_max_high.jun }}
+|Jul avg record high F={{ climate.mean_max_high.jul }}
+|Aug avg record high F={{ climate.mean_max_high.aug }}
+|Sep avg record high F={{ climate.mean_max_high.sep }}
+|Oct avg record high F={{ climate.mean_max_high.oct }}
+|Nov avg record high F={{ climate.mean_max_high.nov }}
+|Dec avg record high F={{ climate.mean_max_high.dec }}
+|year avg record high F={{ climate.mean_max_high.year }} <!-- Note: the yearly data does NOT necessarily reflect the highest temperature in any of the months. This refers to the yearly maximum temperature, that is, on average, the highest temperature to be observed in a year. -->
+<!-- Average high temperatures -->
+| Jan high F  ={{ climate.mean_high.jan }}
+| Feb high F  ={{ climate.mean_high.feb }}
+| Mar high F  ={{ climate.mean_high.mar }}
+| Apr high F  ={{ climate.mean_high.apr }}
+| May high F  ={{ climate.mean_high.may }}
+| Jun high F  ={{ climate.mean_high.jun }}
+| Jul high F  ={{ climate.mean_high.jul }}
+| Aug high F  ={{ climate.mean_high.aug }}
+| Sep high F  ={{ climate.mean_high.sep }}
+| Oct high F  ={{ climate.mean_high.oct }}
+| Nov high F  ={{ climate.mean_high.nov }}
+| Dec high F  ={{ climate.mean_high.dec }}
+| year high F ={{ climate.mean_high.year }}
+<!-- Mean daily temperature -->
+| Jan mean F  =
+| Feb mean F  =
+| Mar mean F  =
+| Apr mean F  =
+| May mean F  =
+| Jun mean F  =
+| Jul mean F  =
+| Aug mean F  =
+| Sep mean F  =
+| Oct mean F  =
+| Nov mean F  =
+| Dec mean F  =
+| year mean F =
+<!-- Average low temperatures -->
+| Jan low F  ={{ climate.mean_low.jan }}
+| Feb low F  ={{ climate.mean_low.feb }}
+| Mar low F  ={{ climate.mean_low.mar }}
+| Apr low F  ={{ climate.mean_low.apr }}
+| May low F  ={{ climate.mean_low.may }}
+| Jun low F  ={{ climate.mean_low.jun }}
+| Jul low F  ={{ climate.mean_low.jul }}
+| Aug low F  ={{ climate.mean_low.aug }}
+| Sep low F  ={{ climate.mean_low.sep }}
+| Oct low F  ={{ climate.mean_low.oct }}
+| Nov low F  ={{ climate.mean_low.nov }}
+| Dec low F  ={{ climate.mean_low.dec }}
+| year low F ={{ climate.mean_low.year }}
+<!-- Average monthly absolute minimum temperatures (that is, on average, the lowest temperature to be observed in a month). It is important to note that this data is not very prominent in most climate data archives. -->
+|Jan avg record low F={{ climate.mean_min_low.jan }}
+|Feb avg record low F={{ climate.mean_min_low.feb }}
+|Mar avg record low F={{ climate.mean_min_low.mar }}
+|Apr avg record low F={{ climate.mean_min_low.apr }}
+|May avg record low F={{ climate.mean_min_low.may }}
+|Jun avg record low F={{ climate.mean_min_low.jun }}
+|Jul avg record low F={{ climate.mean_min_low.jul }}
+|Aug avg record low F={{ climate.mean_min_low.aug }}
+|Sep avg record low F={{ climate.mean_min_low.sep }}
+|Oct avg record low F={{ climate.mean_min_low.oct }}
+|Nov avg record low F={{ climate.mean_min_low.nov }}
+|Dec avg record low F={{ climate.mean_min_low.dec }}
+|year avg record low F={{ climate.mean_min_low.year }} <!-- Note: the yearly data does NOT necessarily reflect the lowest temperature in any of the months. This refers to the yearly lowest temperature, that is, on average, the highest temperature to be observed in a year. -->
+<!-- Record low temperatures -->
+<!-- Note that record temperatures should be used sparingly in main city articles, and should only be used when the data period is of the greatest length possible. -->
+| Jan record low F ={{ climate.record_low.jan }}
+| Feb record low F ={{ climate.record_low.feb }}
+| Mar record low F ={{ climate.record_low.mar }}
+| Apr record low F ={{ climate.record_low.apr }}
+| May record low F ={{ climate.record_low.may }}
+| Jun record low F ={{ climate.record_low.jun }}
+| Jul record low F ={{ climate.record_low.jul }}
+| Aug record low F ={{ climate.record_low.aug }}
+| Sep record low F ={{ climate.record_low.sep }}
+| Oct record low F ={{ climate.record_low.oct }}
+| Nov record low F ={{ climate.record_low.nov }}
+| Dec record low F ={{ climate.record_low.dec }}
+| year record low F ={{ climate.record_low.year }}
+<!-- Total precipitation, this should include rain and snow. -->
+| precipitation colour    =  <!-- Enter "green" for green precipitation colors, "none" for no colours, remove this line for blue coloring. -->
+| Jan precipitation inch  ={{ climate.mean_precip.jan }}
+| Feb precipitation inch  ={{ climate.mean_precip.feb }}
+| Mar precipitation inch  ={{ climate.mean_precip.mar }}
+| Apr precipitation inch  ={{ climate.mean_precip.apr }}
+| May precipitation inch  ={{ climate.mean_precip.may }}
+| Jun precipitation inch  ={{ climate.mean_precip.jun }}
+| Jul precipitation inch  ={{ climate.mean_precip.jul }}
+| Aug precipitation inch  ={{ climate.mean_precip.aug }}
+| Sep precipitation inch  ={{ climate.mean_precip.sep }}
+| Oct precipitation inch  ={{ climate.mean_precip.oct }}
+| Nov precipitation inch  ={{ climate.mean_precip.nov }}
+| Dec precipitation inch  ={{ climate.mean_precip.dec }}
+| year precipitation inch ={{ climate.mean_precip.year }}
+<!-- Rainfall -->
+| rain colour    =  <!-- Enter "green" for green rainfall colors, "none" for no colours, remove this line for blue coloring. -->
+| Jan rain inch  =
+| Feb rain inch  =
+| Mar rain inch  =
+| Apr rain inch  =
+| May rain inch  =
+| Jun rain inch  =
+| Jul rain inch  =
+| Aug rain inch  =
+| Sep rain inch  =
+| Oct rain inch  =
+| Nov rain inch  =
+| Dec rain inch  =
+| year rain inch =
+<!-- Snowfall -->
+<!-- IMPORTANT: Do NOT use snow depth information in the snowfall area. These are 2 different kinds of data! -->
+| snow colour    =  <!-- Enter "green" for green snowfall colors, "none" for no colours, remove this line for blue coloring. -->
+| Jan snow inch  =
+| Feb snow inch  =
+| Mar snow inch  =
+| Apr snow inch  =
+| May snow inch  =
+| Jun snow inch  =
+| Jul snow inch  =
+| Aug snow inch  =
+| Sep snow inch  =
+| Oct snow inch  =
+| Nov snow inch  =
+| Dec snow inch  =
+| year snow inch =
+<!-- Average daily % humidity -->
+| time day        =  <!-- The time of day the humidity was measured at.-->
+| daily           =  <!-- Enter "Y" if the humidity is for the entire day-->
+| humidity colour =  <!-- Enter "green" for green humidity colors, "pastel" for pastel humidity colours, "none" for no colours, remove this line for blue coloring. -->
+| Jan humidity    =
+| Feb humidity    =
+| Mar humidity    =
+| Apr humidity    =
+| May humidity    =
+| Jun humidity    =
+| Jul humidity    =
+| Aug humidity    =
+| Sep humidity    =
+| Oct humidity    =
+| Nov humidity    =
+| Dec humidity    =
+| year humidity   =
+<!-- The humidex table can be used only if the source provides humidex values. As of July 2015, few if any countries other than Canada use the Humidex. -->
+<!-- Maximum Humidex -->
+| Jan maximum humidex  =
+| Feb maximum humidex  =
+| Mar maximum humidex  =
+| Apr maximum humidex  =
+| May maximum humidex  =
+| Jun maximum humidex  =
+| Jul maximum humidex  =
+| Aug maximum humidex  =
+| Sep maximum humidex  =
+| Oct maximum humidex  =
+| Nov maximum humidex  =
+| Dec maximum humidex  =
+| year maximum humidex =
+<!-- Minimum wind chill -->
+| Jan chill  =
+| Feb chill  =
+| Mar chill  =
+| Apr chill  =
+| May chill  =
+| Jun chill  =
+| Jul chill  =
+| Aug chill  =
+| Sep chill  =
+| Oct chill  =
+| Nov chill  =
+| Dec chill  =
+| year chill =
+<!-- Average number of precipitation days -->
+| unit precipitation days =  <!-- If entering the average number of days, then the unit requirement should be used, because this varies between countries. E.g. 0.1 in, 0.01 in. -->
+| precip days colour      =  <!-- Enter "green" for green colors, "pastel" for pastel colours, "none" for no colours, remove this line for blue coloring. Affects rain and snow days as well -->
+| Jan precipitation days  =
+| Feb precipitation days  =
+| Mar precipitation days  =
+| Apr precipitation days  =
+| May precipitation days  =
+| Jun precipitation days  =
+| Jul precipitation days  =
+| Aug precipitation days  =
+| Sep precipitation days  =
+| Oct precipitation days  =
+| Nov precipitation days  =
+| Dec precipitation days  =
+| year precipitation days =
+<!-- Average number of rainy days -->
+| unit rain days =  <!-- If entering the average number of days, then the unit requirement should be used, because this varies between countries. E.g. 0.1 in, 0.01 in. -->
+| Jan rain days  =
+| Feb rain days  =
+| Mar rain days  =
+| Apr rain days  =
+| May rain days  =
+| Jun rain days  =
+| Jul rain days  =
+| Aug rain days  =
+| Sep rain days  =
+| Oct rain days  =
+| Nov rain days  =
+| Dec rain days  =
+| year rain days =
+<!-- Average number of snowy days -->
+| unit snow days =  <!-- If entering the average number of days, then the unit requirement should be used, because this varies between countries. E.g. 0.1 in, 0.01 in. -->
+| Jan snow days  =
+| Feb snow days  =
+| Mar snow days  =
+| Apr snow days  =
+| May snow days  =
+| Jun snow days  =
+| Jul snow days  =
+| Aug snow days  =
+| Sep snow days  =
+| Oct snow days  =
+| Nov snow days  =
+| Dec snow days  =
+| year snow days =
+<!-- Average monthly sunshine hours, monthly totals are preferred, and will produce colors, but percentages are accepted. Use either the monthly or daily sunshine (depending on the source) but not both. -->
+| Jan sun  =
+| Feb sun  =  <!-- For February only if the source gives daily hours, please multiply by 28.25, not 28 -->
+| Mar sun  =
+| Apr sun  =
+| May sun  =
+| Jun sun  =
+| Jul sun  =
+| Aug sun  =
+| Sep sun  =
+| Oct sun  =
+| Nov sun  =
+| Dec sun  =
+| year sun =
+<!-- Average daily sunshine hours. Use either the monthly or daily sunshine (depending on the source) but not both. -->
+| Jand sun  =
+| Febd sun  =
+| Mard sun  =
+| Aprd sun  =
+| Mayd sun  =
+| Jund sun  =
+| Juld sun  =
+| Augd sun  =
+| Sepd sun  =
+| Octd sun  =
+| Novd sun  =
+| Decd sun  =
+| yeard sun =
+<!-- Average percent of possible sunshine. Number of daylight hours already factored into this number. Note that since this is possible sunshine, nighttime hours should not be included in this calculation. Will produce colors. -->
+| Jan percentsun  =
+| Feb percentsun  =
+| Mar percentsun  =
+| Apr percentsun  =
+| May percentsun  =
+| Jun percentsun  =
+| Jul percentsun  =
+| Aug percentsun  =
+| Sep percentsun  =
+| Oct percentsun  =
+| Nov percentsun  =
+| Dec percentsun  =
+| year percentsun =
+<!-- Mandatory fields, source -->
+| source = <ref name="">{{ '{{' }}cite web |url= |title= |publisher= |access-date=August 4, 2016 {{ '}}' }}</ref>
+<!-- For a second source -->
+| source 2 = <ref name="">{{ '{{' }}cite web |url= |title= |publisher= |access-date=August 4, 2016 {{ '}}' }}</ref>
+{{ '}}' }}<!-- Infobox ends -->
