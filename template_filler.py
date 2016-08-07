@@ -5,7 +5,7 @@ def get_weatherbox(city):
     # of the cities file
     # Returns a string of a filled weather box in the format of the Wikipedia
     # template found at https://en.wikipedia.org/wiki/Template:Weather_box
-    template_string = open('weather_box_template.jinja', 'rb').read()
+    template_string = open('weather_box_template.jinja', 'rb').read().decode('utf-8')
     box_template = Template(template_string)
 
     print(box_template.render(city))

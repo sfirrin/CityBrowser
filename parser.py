@@ -7,6 +7,7 @@ import re
 import us_regions
 import template_filler
 import json
+import numpy as np
 
 from math import radians, cos, sin, asin, sqrt
 
@@ -22,7 +23,7 @@ def get_cities(stations):
 
     cities = []
 
-    for row in rows[:4]:
+    for row in rows:
         data = row.find_all('td')
         city = {}
 
@@ -36,7 +37,7 @@ def get_cities(stations):
 
         city['wiki'] = data[1].a.get('href')
         city['name'] = data[1].a.text
-        # print(city['name'])
+        print(city['name'])
         city['state'] = data[2].a.text
         if city['state'] == "Hawai'i":
             city['state'] = 'Hawaii'
@@ -57,10 +58,14 @@ def get_cities(stations):
         nearby_stations = get_nearest_station((city['latitude'], city['longitude']), stations)
         for station in nearby_stations:
             try:
-                city['climate'] = get_weather((city['latitude'], city['longitude']))
+                # print(station)
+                city['climate'] = get_station_weather(station)
+                city['station'] = station
+                print(station['ghcn_id'], station['distance'])
                 break
-            except ValueError:
+            except ValueError as ve:
                 pass
+                # print(ve.args)
         cities.append(city)
         index += 1
     return cities
@@ -115,7 +120,7 @@ def get_stations_dict():
             print(line)
             name = 'not found'
         # print(name)
-        stations[latlong] = {'ghcn_id': id, 'name': name.title()}
+        stations[latlong] = {'ghcn_id': id, 'name': name}
     return stations
 
 def get_nearest_station(latlong, stations):
@@ -130,7 +135,7 @@ def get_nearest_station(latlong, stations):
         current_station['distance'] = round(distance, 2)
         all_stations.append(current_station)
     sorted_stations = sorted(all_stations, key=lambda k: k['distance'])
-    return sorted_stations[:10]
+    return sorted_stations
 
 def get_line_with_id(id, path):
     # With a given station ID and file path (to the monthly normal), returns all
@@ -167,12 +172,14 @@ def get_monthly_normals(line, temp_not_precip=True):
     return month_normals
 
 
-def get_station_weather(station_id):
+def get_station_weather(station):
     # Retrieves the monthly normal data (30 year average) from the NOAA dataset
     # The normal files are downloaded in this repo but they can be obtained from
     # http://www1.ncdc.noaa.gov/pub/data/normals/1981-2010/products/
 
     weather = {}
+
+    station_id = station['ghcn_id']
 
     mean_high_line = get_line_with_id(station_id, 'noaa/mly-tmax-normal.txt')
     weather['mean_high'] = get_monthly_normals(mean_high_line)
@@ -189,6 +196,8 @@ def get_station_weather(station_id):
 
     weather.update(get_min_max_mean_record(station_id))
 
+    weather['station'] = station
+
     return weather
 
 
@@ -197,9 +206,13 @@ def get_weather(latlong):
     # Looks up info about that station from NOAA files and returns a dict
     # Containing weather info as well as the station
     allstations = get_stations_dict()
-    station = get_nearest_station(latlong, allstations)[0]
-    weather = get_station_weather(station['ghcn_id'])
-    weather.update({'station': station})
+    nearest_stations = get_nearest_station(latlong, allstations)
+    for station in nearest_stations:
+        try:
+            weather = get_station_weather(station)
+            break
+        except ValueError:
+            pass
     return weather
 
 
@@ -242,6 +255,7 @@ def get_extremes_from_lines(lines, max_not_min=True):
 
     month_mean_extreme = {}
     month_record_extreme = {}
+    from pprint import pprint
 
     for i in range(12):
         extremes = month_extremes[i + 1]
@@ -254,7 +268,7 @@ def get_extremes_from_lines(lines, max_not_min=True):
         month_record_extreme[months[i]] = round(c_to_f(record_extreme), 2)
 
     yearly_mean_of_extremes = round(sum(month_mean_extreme.values()) / float(len(month_mean_extreme.values())), 2)
-    month_mean_extreme['year'] = yearly_mean_of_extremes
+    month_mean_extreme['year'] = get_mean_yearly_extreme(month_extremes, max_not_min)
 
     if max_not_min:
         month_record_extreme['year'] = round(max(month_record_extreme.values()), 2)
@@ -262,6 +276,23 @@ def get_extremes_from_lines(lines, max_not_min=True):
         month_record_extreme['year'] = round(min(month_record_extreme.values()), 2)
 
     return month_mean_extreme, month_record_extreme
+
+
+def get_mean_yearly_extreme(month_extremes, max_not_min=True):
+    # Takes as input the month_extremes dictionary made in get_extremes_from_lines
+    # Converts the dictionary to a numpy array with years as columns and months
+    # As rows
+    # Returns the average yearly max/min temp (the mean max or min temp for all years)
+    month_extremes_np = np.array(month_extremes.values())
+    if max_not_min:
+        whole_year_extremes = month_extremes_np.max(axis=0)
+    else:
+        whole_year_extremes = month_extremes_np.min(axis=0)
+    # print(whole_year_extremes)
+    average_year_extreme = round(c_to_f(np.average(whole_year_extremes)), 2)
+    # print(average_year_extreme)
+    return average_year_extreme
+
 
 def get_min_max_mean_record(station_id):
     # Takes a station ID as input and returns a dictionary with mean
@@ -308,9 +339,11 @@ def main():
     # pprint(get_weather(asheville))
     # pprint(get_nearest_station(raleigh, stations))
     cities = get_cities(stations)
-    template_filler.get_weatherbox(cities[0])
+    # for city in cities:
+    #     print(city['climate']['station']['ghcn_id'])
+    # template_filler.get_weatherbox(cities[0])
     # #
-    # json.dump(cities, open('cities.json', 'wb'))
+    json.dump(cities, open('cities.json', 'wb'))
 
 
     # from pprint import pprint
