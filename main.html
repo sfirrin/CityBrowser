@@ -13,7 +13,7 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
 
     <style>
-        .slider {
+        .temp_slider {
             margin: 0 auto;
             display: inline-block;
             height: 200px;
@@ -43,6 +43,8 @@
         .city_list {
             clear: both;
         }
+
+
     </style>
 
 </head>
@@ -53,16 +55,24 @@
                 <h2>Average highs and lows</h2>
                 <div class="row">
                     <div class="col-xs-3">
-                        <div class="slider spring"></div>
+                        <p class="high_bound">120</p>
+                        <div class="temp_slider spring"></div>
+                        <p class="low_bound">-20</p>
                     </div>
                     <div class="col-xs-3">
-                        <div class="slider summer"></div>
+                        <p class="high_bound">120</p>
+                        <div class="temp_slider summer"></div>
+                        <p class="low_bound">-20</p>
                     </div>
                     <div class="col-xs-3">
-                        <div class="slider fall"></div>
+                        <p class="high_bound">120</p>
+                        <div class="temp_slider fall"></div>
+                        <p class="low_bound">-20</p>
                     </div>
                     <div class="col-xs-3">
-                        <div class="slider winter"></div>
+                        <p class="high_bound">120</p>
+                        <div class="temp_slider winter"></div>
+                        <p class="low_bound">-20</p>
                     </div>
                 </div>
             </div>
@@ -70,19 +80,34 @@
                 <h2>Average max/min high/low</h2>
                 <div class="row">
                     <div class="col-xs-3">
-                        <div class="slider spring"></div>
+                        <p class="high_bound">120</p>
+                        <div class="temp_slider spring"></div>
+                        <p class="low_bound">-20</p>
                     </div>
                     <div class="col-xs-3">
-                        <div class="slider summer"></div>
+                        <p class="high_bound">120</p>
+                        <div class="temp_slider summer"></div>
+                        <p class="low_bound">-20</p>
                     </div>
                     <div class="col-xs-3">
-                        <div class="slider fall"></div>
+                        <p class="high_bound">120</p>
+                        <div class="temp_slider fall"></div>
+                        <p class="low_bound">-20</p>
                     </div>
                     <div class="col-xs-3">
-                        <div class="slider winter"></div>
+                        <p class="high_bound">120</p>
+                        <div class="temp_slider winter"></div>
+                        <p class="low_bound">-20</p>
                     </div>
                 </div>
             </div>
+        </div>
+
+        <div class="row">
+            <h2>Population</h2>
+            <p class="low_bound col-xs-2">100</p>
+            <div id="pop_slider" class="col-xs-8"></div>
+            <p class="high_bound col-xs-2">10000</p>
         </div>
 
 

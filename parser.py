@@ -300,7 +300,7 @@ def get_min_max_mean_record(station_id):
 
     # I have downloaded these .dly files locally but they can be requested from
     # ftp://ftp.ncdc.noaa.gov/pub/data/ghcn/daily/all/
-    lines = open('../../ghcnd_all/' + station_id + '.dly').readlines()
+    lines = open('../../ghcnd_us/' + station_id + '.dly').readlines()
     # Lines with temp max data
     tmax_lines = [line for line in lines if 'TMAX' in line]
     # Lines with temp min data
@@ -315,6 +315,60 @@ def get_min_max_mean_record(station_id):
     # pprint(mins_and_maxes)
 
     return mins_and_maxes
+
+def convert_climate_to_seasons(city):
+    """
+    For when you want the city's weather to be by season rather than by month
+    What I'm using it for is the web app since going by month would be too much
+    :param city: The city dictionary produced by get_cities
+    :return: A new city dictionary with a weather item that uses seasons rather
+             than months
+    """
+    climate = city.pop('climate')
+    months_to_seasons = {'dec': 'winter', 'jan': 'winter', 'feb': 'winter',
+                   'mar': 'spring', 'apr': 'spring', 'may': 'spring',
+                   'jun': 'summer', 'jul': 'summer', 'aug': 'summer',
+                   'sep': 'fall', 'oct': 'fall', 'nov': 'fall'}
+    seasons_to_months = {'winter': ['dec', 'jan', 'feb'], 'spring': ['mar', 'apr', 'may'],
+                         'summer': ['jun', 'jul', 'aug'], 'fall': ['sep', 'oct', 'nov'], 'year': ['year']}
+    # pprint(seasons_to_months)
+    seasons_climate = {'record_high': {}, 'record_low': {}, 'mean_max_high': {}, 'mean_min_low': {}}
+
+    for stat in ['mean_high', 'mean_low', 'mean_precip']:
+        seasons_stat = {}
+        for month in climate[stat]:
+            if month == 'year':
+                seasons_stat['year'] = round(climate[stat]['year'], 2)
+                continue
+            season = months_to_seasons[month]
+            # Creating an average of the three months by adding 1/3 of each to zero, one at a time
+            seasons_stat[season] = round(seasons_stat.get(season, 0) + (1.0/3)*climate[stat][month], 2)
+        seasons_climate[stat] = seasons_stat
+
+    record_highs = climate['record_high']
+    record_lows = climate['record_low']
+    mean_max_highs = climate['mean_max_high']
+    mean_min_lows = climate['mean_min_low']
+
+    for season in seasons_to_months:
+        season_months = seasons_to_months[season]
+        season_record_highs = []
+        season_record_lows = []
+        season_mean_max_highs = []
+        season_mean_min_lows = []
+        for month in season_months:
+            season_record_highs.append(record_highs[month])
+            season_record_lows.append(record_lows[month])
+            season_mean_max_highs.append(mean_max_highs[month])
+            season_mean_min_lows.append(mean_min_lows[month])
+        seasons_climate['record_high'][season] = max(season_record_highs)
+        seasons_climate['record_low'][season] = min(season_record_lows)
+        seasons_climate['mean_max_high'][season] = max(season_mean_max_highs)
+        seasons_climate['mean_min_low'][season] = min(season_mean_min_lows)
+    seasons_climate['station'] = climate['station']
+    # pprint(seasons_climate)
+    city['climate'] = seasons_climate
+
 
 
 def main():
@@ -343,6 +397,9 @@ def main():
     #     print(city['climate']['station']['ghcn_id'])
     # template_filler.get_weatherbox(cities[0])
     # #
+    for city in cities:
+        convert_climate_to_seasons(city)
+
     json.dump(cities, open('cities.json', 'wb'))
 
 

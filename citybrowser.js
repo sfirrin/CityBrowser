@@ -1,58 +1,48 @@
-// function setColor(){
-//
-//     // Get the slider values,
-//     // stick them together.
-//     var color = 'rgb(' +
-//         sliders[0].noUiSlider.get() + ',' +
-//         sliders[1].noUiSlider.get() + ',' +
-//         sliders[2].noUiSlider.get() + ')';
-//
-//     // Fill the color box.
-//     resultElement.style.background = color;
-//     resultElement.style.color = color;
-// }
+var avgHighLow = [0, 0, 0, 0];
+var avgExtremeTemp = [0, 0, 0, 0];
 
-var monthsDiv = $('#months');
-var resultElement = document.getElementById('result'),
-    sliders = document.getElementsByClassName('sliders');
-
-// for (var i = 0; i < 12; i++) {
-//     var monthSlider = $('<div></div>').addClass('slider');
-//
-//     monthsDiv.append(monthSlider);
-// }
-
-$('.slider').each(function(i, obj) {
+$('.temp_slider').each(function(i, obj) {
     noUiSlider.create(obj, {
-        start: [20, 80],
+        start: [10, 90],
         connect: true,
         orientation: 'vertical',
+        direction: 'rtl',
         range: {
-            'min': 0,
-            'max': 100
+            'min': -20,
+            'max': 120
         }
+    });
+
+    obj.noUiSlider.on('update', function(values, handle) {
+
+        // Updating the labels for the temp sliders
+        var value = values[handle];
+        var high_bound = obj.nextElementSibling;
+        var low_bound = obj.previousElementSibling;
+        var setting_high = handle === 0;
+        if (setting_high) {
+            high_bound.textContent = Math.round(value);
+        } else {
+            low_bound.textContent = Math.round(value);
+        }
+
+        // Applying the filters to the shown cities
+
+
+
     });
 });
 
-// for ( var i = 0; i < sliders.length; i++ ) {
-//
-//     noUiSlider.create(sliders[i], {
-//         start: 127,
-//         connect: "lower",
-//         orientation: "vertical",
-//         range: {
-//             'min': 0,
-//             'max': 255
-//         },
-//         format: wNumb({
-//             decimals: 0
-//         })
-//     });
-//
-//     // Bind the color changing function
-//     // to the slide event.
-//     // sliders[i].noUiSlider.on('slide', setColor);
-// }
+var pop_slider = $('#pop_slider')[0];
+noUiSlider.create(pop_slider, {
+    start: [100000, 10000000],
+    connect: true,
+    range: {
+        'min': 100000,
+        'max': 10000000
+    }
+});
+
 
 function initiallyPopulate() {
     return $.getJSON('cities.json', function(response) {
