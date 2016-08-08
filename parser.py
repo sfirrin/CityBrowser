@@ -341,8 +341,11 @@ def convert_climate_to_seasons(city):
                 seasons_stat['year'] = round(climate[stat]['year'], 2)
                 continue
             season = months_to_seasons[month]
-            # Creating an average of the three months by adding 1/3 of each to zero, one at a time
-            seasons_stat[season] = round(seasons_stat.get(season, 0) + (1.0/3)*climate[stat][month], 2)
+            if stat == 'mean_precip':
+                seasons_stat[season] = round(seasons_stat.get(season, 0) + climate[stat][month], 2)
+            else:
+                # Creating an average of the three months by adding 1/3 of each to zero, one at a time
+                seasons_stat[season] = round(seasons_stat.get(season, 0) + (1.0/3)*climate[stat][month], 2)
         seasons_climate[stat] = seasons_stat
 
     record_highs = climate['record_high']

@@ -1,10 +1,7 @@
-var avgHighLow = [0, 0, 0, 0];
-var avgExtremeTemp = [0, 0, 0, 0];
-
 function initializeSliders(cities) {
     $('.temp_slider').each(function(i, obj) {
         noUiSlider.create(obj, {
-            start: [10, 90],
+            start: [0, 100],
             connect: true,
             orientation: 'vertical',
             direction: 'rtl',
@@ -18,9 +15,9 @@ function initializeSliders(cities) {
 
             // Updating the labels for the temp sliders
             var value = values[handle];
-            var high_bound = obj.nextElementSibling;
-            var low_bound = obj.previousElementSibling;
-            var setting_high = handle === 0;
+            var high_bound = obj.previousElementSibling;
+            var low_bound = obj.nextElementSibling;
+            var setting_high = handle === 1;
             if (setting_high) {
                 high_bound.textContent = Math.round(value);
             } else {
@@ -28,7 +25,11 @@ function initializeSliders(cities) {
             }
 
             // Applying the filters to the shown cities
-
+            var variable = $(obj).closest('.seasons').attr('id');
+            var season = $(obj).attr('class').split(' ')[1];
+            // console.log(variable + ' ' + season);
+            filters[variable][season]= [low_bound.textContent, high_bound.textContent];
+            updateList();
         });
     });
 
@@ -55,16 +56,24 @@ function initializeSliders(cities) {
         } else {
             low_bound.textContent = Math.round(value);
         }
-
-        updateList({'population': [low_bound.textContent, high_bound.textContent]})
+        filters.population = [low_bound.textContent, high_bound.textContent];
+        updateList();
     });
 
-    function updateList(change) {
-        console.log(change);
-        console.log(cities.responseJSON);
+    function updateList() {
+        // console.log(cities.responseJSON);
         var list = $('.city_list');
         var filteredCities = $.grep(cities.responseJSON, function( city, i ) {
-            return city.population > change.population[0] && city.population < change.population[1];
+            var pass = city.population > filters.population[0] && city.population < filters.population[1];
+            if (!pass) return false;
+            $.each(['spring', 'summer', 'fall', 'winter', 'year'], function(index, season) {
+                pass = pass
+                    && city['climate']['mean_low'][season] > filters['avg_high_low'][season][0]
+                    && city['climate']['mean_high'][season] < filters['avg_high_low'][season][1]
+                    && city['climate']['mean_min_low'][season] > filters['extreme_high_low'][season][0]
+                    && city['climate']['mean_max_high'][season] < filters['extreme_high_low'][season][1];
+            });
+            return pass;
         });
         list.empty();
         $.each(filteredCities, function( i, city ) {
@@ -75,7 +84,31 @@ function initializeSliders(cities) {
 // End initialize sliders
 }
 
-
+var filters = {
+    'population': [-100, 999999999],
+    'mean_precip': {
+        'spring': [-999, 999],
+        'summer': [-999, 999],
+        'fall': [-999, 999],
+        'winter': [-999, 999],
+        'year': [-999, 999]
+    },
+    'avg_high_low': {
+        'spring': [-999, 999],
+        'summer': [-999, 999],
+        'fall': [-999, 999],
+        'winter': [-999, 999],
+        'year': [-999, 999]
+    },
+    'extreme_high_low': {
+        'spring': [-999, 999],
+        'summer': [-999, 999],
+        'fall': [-999, 999],
+        'winter': [-999, 999],
+        'year': [-999, 999]
+    },
+    'region': ['Northeast', 'South', 'West', 'Southwest', 'Midwest']
+};
 
 function initializeListAndSliders() {
 
