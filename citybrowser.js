@@ -62,19 +62,18 @@ function initializeSliders(cities) {
 
 
             if (isLocked && !lockUpdateInProgress) {
+                // TODO: Optimize this so it's not super slow
                 // Changing the other sliders in this variable
                 var variableSliders = $(obj).parent().siblings().children('.temp_slider');
                 lockUpdateInProgress = true;
                 $.each(variableSliders, function(i, slider) {
                     // console.log(slider);
                     var currentBounds = slider.noUiSlider.get();
-                    console.log('Changes ' + [lowChange, highChange]);
-                    console.log('Current ' + currentBounds);
-                    // var newLow = Math.max(currentBounds[0] + lowChange, -20);
-                    // var newHigh = Math.min(currentBounds[1] + highChange, 120);
+                    // console.log('Changes ' + [lowChange, highChange]);
+                    // console.log('Current ' + currentBounds);
                     var newLow = +currentBounds[0] + +lowChange;
                     var newHigh = +currentBounds[1] + +highChange;
-                    console.log('New ' + [newLow, newHigh]);
+                    // console.log('New ' + [newLow, newHigh]);
                     slider.noUiSlider.set([newLow, newHigh]);
                 });
                 lockUpdateInProgress = false;
@@ -136,7 +135,7 @@ function initializeSliders(cities) {
         });
         list.empty();
         $.each(filteredCities, function( i, city ) {
-            var cityDiv = cityDivMap[city.name];
+            var cityDiv = cityDivMap[city.id];
             list.append(cityDiv);
         })
     }
@@ -174,9 +173,10 @@ function getCityDiv(city) {
     var cityDiv = $('<div></div>').addClass('row');
     var leftSection = $('<div></div>').addClass('col-xs-3');
     var rightSection = $('<div></div>').addClass('col-xs-9');
-    leftSection.append($('<img src="thumb.jpg" />').addClass('img-responsive'));
+    leftSection.append($('<img src="city_images/' + city.id + '.jpg" />').addClass('img-responsive'));
 
     rightSection.append($('<h4></h4>').text(city.name));
+    rightSection.append($('<p></p>').text(city.wiki_intro));
     cityDiv.append(leftSection, rightSection);
 
     cityLi.append(cityDiv);
@@ -188,7 +188,7 @@ function getCityDivMap(cities) {
     // console.log(cities);
     $.each(cities.responseJSON, function(i, city) {
         // console.log(city.name);
-        cityDivMap[city.name] = getCityDiv(city);
+        cityDivMap[city.id] = getCityDiv(city);
     });
 }
 

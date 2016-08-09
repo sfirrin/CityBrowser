@@ -7,6 +7,7 @@ import re
 import us_regions
 import template_filler
 import json
+import urllib
 import numpy as np
 
 from math import radians, cos, sin, asin, sqrt
@@ -424,6 +425,22 @@ def main():
     # #
     for city in cities:
         remove_noncentral_months(city)
+        id = city['id']
+        city_file = open('city_pages/' + id + '.html')
+        city_wiki = BeautifulSoup(city_file, 'html.parser')
+        intro = city_wiki.find(id='mw-content-text').find('p', recursive=False).text
+        # Removing citations
+        intro = re.sub(r'\[\w+\]', '', intro)
+        intro = re.sub(r' \(.+?\)', '', intro)
+        intro = re.sub(r'/*/', '', intro)
+        photo_url = city_wiki.find(class_='infobox').find('img')['src'][2:]
+        urllib.urlretrieve('http://' + photo_url, 'city_images/' + id + '.jpg')
+        city['photo_url'] = photo_url
+        city['wiki_intro'] = intro
+        print(intro)
+        time.sleep(0.5)
+        # print(photo_url)
+
 
     json.dump(cities, open('cities.json', 'wb'))
 
