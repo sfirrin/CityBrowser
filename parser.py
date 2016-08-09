@@ -372,6 +372,27 @@ def convert_climate_to_seasons(city):
     # pprint(seasons_climate)
     city['climate'] = seasons_climate
 
+def remove_noncentral_months(city):
+    """
+    I had the idea to show the middle months of each season, rather than the season statistics
+    The idea being that the individual months will tell a more concrete story than the seasons
+    :param city: The city dictionary produced by get_cities
+    :return: The same city dicitonary, with the extra months removed
+    """
+
+    original_climate = city.pop('climate')
+    trimmed_climate = {}
+
+    trimmed_climate['station'] = original_climate['station']
+
+    for stat in original_climate:
+        if stat == 'station':
+            continue
+        trimmed_climate.setdefault(stat, {})
+        for month in original_climate[stat]:
+            if month in ['jan', 'apr', 'jul', 'oct', 'year']:
+                trimmed_climate[stat][month] = original_climate[stat][month]
+    city['climate'] = trimmed_climate
 
 
 def main():
@@ -401,7 +422,7 @@ def main():
     # template_filler.get_weatherbox(cities[0])
     # #
     for city in cities:
-        convert_climate_to_seasons(city)
+        remove_noncentral_months(city)
 
     json.dump(cities, open('cities.json', 'wb'))
 

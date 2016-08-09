@@ -1,15 +1,35 @@
 function initializeSliders(cities) {
     $('.temp_slider').each(function(i, obj) {
-        noUiSlider.create(obj, {
-            start: [0, 100],
-            connect: true,
-            orientation: 'vertical',
-            direction: 'rtl',
-            range: {
-                'min': -20,
-                'max': 120
-            }
-        });
+        // Make a slider with pips for the year sliders
+        if ($(obj).attr('class').split(' ')[1] === 'year') {
+            noUiSlider.create(obj, {
+                start: [-20, 120],
+                connect: true,
+                orientation: 'vertical',
+                direction: 'rtl',
+                range: {
+                    'min': -20,
+                    'max': 120
+                },
+                pips: { // Show a scale with the slider
+                    mode: 'values',
+                    values: [-20, 0, 20, 40, 60, 80, 100, 120],
+                    density: 2
+                }
+            });
+        } else {
+            noUiSlider.create(obj, {
+                start: [-20, 120],
+                connect: true,
+                orientation: 'vertical',
+                direction: 'rtl',
+                range: {
+                    'min': -20,
+                    'max': 120
+                }
+            });
+        }
+
 
         obj.noUiSlider.on('update', function(values, handle) {
 
@@ -41,8 +61,13 @@ function initializeSliders(cities) {
             'min': 100000,
             '50%': 200000,
             '70%': 500000,
-            '90%': 5000000,
+            '95%': 1000000,
             'max': 9000000
+        },
+        pips: {
+            mode: 'positions',
+            values: [0, 20, 40, 60, 80, 100],
+            density: 2
         }
     });
 
@@ -66,7 +91,7 @@ function initializeSliders(cities) {
         var filteredCities = $.grep(cities.responseJSON, function( city, i ) {
             var pass = city.population > filters.population[0] && city.population < filters.population[1];
             if (!pass) return false;
-            $.each(['spring', 'summer', 'fall', 'winter', 'year'], function(index, season) {
+            $.each(['apr', 'jul', 'oct', 'jan', 'year'], function(index, season) {
                 pass = pass
                     && city['climate']['mean_low'][season] > filters['avg_high_low'][season][0]
                     && city['climate']['mean_high'][season] < filters['avg_high_low'][season][1]
@@ -77,8 +102,8 @@ function initializeSliders(cities) {
         });
         list.empty();
         $.each(filteredCities, function( i, city ) {
-            var city_item = $('<li></li>').text(city.name + ' ' + city.population);
-            list.append(city_item);
+            var cityDiv = cityDivMap[city.name];
+            list.append(cityDiv);
         })
     }
 // End initialize sliders
@@ -87,41 +112,67 @@ function initializeSliders(cities) {
 var filters = {
     'population': [-100, 999999999],
     'mean_precip': {
-        'spring': [-999, 999],
-        'summer': [-999, 999],
-        'fall': [-999, 999],
-        'winter': [-999, 999],
+        'apr': [-999, 999],
+        'jul': [-999, 999],
+        'oct': [-999, 999],
+        'jan': [-999, 999],
         'year': [-999, 999]
     },
     'avg_high_low': {
-        'spring': [-999, 999],
-        'summer': [-999, 999],
-        'fall': [-999, 999],
-        'winter': [-999, 999],
+        'apr': [-999, 999],
+        'jul': [-999, 999],
+        'oct': [-999, 999],
+        'jan': [-999, 999],
         'year': [-999, 999]
     },
     'extreme_high_low': {
-        'spring': [-999, 999],
-        'summer': [-999, 999],
-        'fall': [-999, 999],
-        'winter': [-999, 999],
+        'apr': [-999, 999],
+        'jul': [-999, 999],
+        'oct': [-999, 999],
+        'jan': [-999, 999],
         'year': [-999, 999]
     },
     'region': ['Northeast', 'South', 'West', 'Southwest', 'Midwest']
 };
 
+function getCityDiv(city) {
+    var cityLi = $('<li></li>');
+    var cityDiv = $('<div></div>').addClass('row');
+    var leftSection = $('<div></div>').addClass('col-xs-3');
+    var rightSection = $('<div></div>').addClass('col-xs-9');
+    leftSection.append($('<img src="thumb.jpg" />').addClass('img-responsive'));
+
+    rightSection.append($('<h4></h4>').text(city.name));
+    cityDiv.append(leftSection, rightSection);
+
+    cityLi.append(cityDiv);
+    return cityLi;
+}
+
+function getCityDivMap(cities) {
+    cityDivMap = {};
+    // console.log(cities);
+    $.each(cities.responseJSON, function(i, city) {
+        console.log(city.name);
+        cityDivMap[city.name] = getCityDiv(city);
+    });
+}
+
 function initializeListAndSliders() {
 
     cities =  $.getJSON('cities.json', function(response) {
 //                console.log(response);
-        $.each(response, function(i, city) {
-            var city_item = $('<li></li>').text(city.name + ' ' + city.population);
-            $('.city_list').append(city_item);
-        });
+
+        // $.each(response, function(i, city) {
+        //     var cityDiv = getCityDiv(city);
+        //     $('.city_list').append(cityDiv);
+        // });
+        getCityDivMap(cities);
         initializeSliders(cities);
     });
 }
 
+var cityDivMap;
 var cities;
 initializeListAndSliders();
 
