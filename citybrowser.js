@@ -35,20 +35,54 @@ function initializeSliders(cities) {
 
             // Updating the labels for the temp sliders
             var value = values[handle];
-            var high_bound = obj.previousElementSibling;
-            var low_bound = obj.nextElementSibling;
+            var highBound = obj.previousElementSibling;
+            var lowBound = obj.nextElementSibling;
+
+
+
             var setting_high = handle === 1;
+
+            var highChange = setting_high ? value - highBound.textContent : 0;
+            var lowChange = setting_high ? 0 : value - lowBound.textContent;
+
             if (setting_high) {
-                high_bound.textContent = Math.round(value);
+                highBound.textContent = Math.round(value);
             } else {
-                low_bound.textContent = Math.round(value);
+                lowBound.textContent = Math.round(value);
             }
+
+
 
             // Applying the filters to the shown cities
             var variable = $(obj).closest('.seasons').attr('id');
             var season = $(obj).attr('class').split(' ')[1];
+
+            var isLocked = $('#' + variable + '_lock').is(':checked');
+
+
+
+            if (isLocked && !lockUpdateInProgress) {
+                // Changing the other sliders in this variable
+                var variableSliders = $(obj).parent().siblings().children('.temp_slider');
+                lockUpdateInProgress = true;
+                $.each(variableSliders, function(i, slider) {
+                    // console.log(slider);
+                    var currentBounds = slider.noUiSlider.get();
+                    console.log('Changes ' + [lowChange, highChange]);
+                    console.log('Current ' + currentBounds);
+                    // var newLow = Math.max(currentBounds[0] + lowChange, -20);
+                    // var newHigh = Math.min(currentBounds[1] + highChange, 120);
+                    var newLow = +currentBounds[0] + +lowChange;
+                    var newHigh = +currentBounds[1] + +highChange;
+                    console.log('New ' + [newLow, newHigh]);
+                    slider.noUiSlider.set([newLow, newHigh]);
+                });
+                lockUpdateInProgress = false;
+            }
+
+            // console.log(isLocked);
             // console.log(variable + ' ' + season);
-            filters[variable][season]= [low_bound.textContent, high_bound.textContent];
+            filters[variable][season]= [lowBound.textContent, highBound.textContent];
             updateList();
         });
     });
@@ -153,7 +187,7 @@ function getCityDivMap(cities) {
     cityDivMap = {};
     // console.log(cities);
     $.each(cities.responseJSON, function(i, city) {
-        console.log(city.name);
+        // console.log(city.name);
         cityDivMap[city.name] = getCityDiv(city);
     });
 }
@@ -172,6 +206,7 @@ function initializeListAndSliders() {
     });
 }
 
+var lockUpdateInProgress;
 var cityDivMap;
 var cities;
 initializeListAndSliders();

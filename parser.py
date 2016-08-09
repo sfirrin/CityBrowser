@@ -43,6 +43,7 @@ def get_cities(stations):
             city['state'] = 'Hawaii'
         city['region'] = us_regions.STATES_TO_REGIONS[city['state']]
         city['population'] = int(data[3].text.replace(',', ''))
+        city['id'] = str(index).rjust(3, '0')
         try:
             growth_rate = data[5].font.text
             positive = '+' in growth_rate

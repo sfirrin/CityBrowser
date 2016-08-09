@@ -59,6 +59,19 @@
             margin-bottom: 30px;
         }
 
+        h4 {
+            margin: 0;
+        }
+
+        ul {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        li {
+            margin: 20px;
+        }
+
 
     </style>
 
@@ -95,13 +108,19 @@
                         <p class="low_bound">-20</p>
                     </div>
                 </div>
+                <div class="row">
+                    <div class="col-xs-8 offset-xs-2">
+                        <input type="checkbox" id="avg_high_low_lock" name="avg_high_low_lock"/>
+                        <label for="avg_high_low_lock">Lock sliders</label>
+                    </div>
+                </div>
             </div>
             <div id="extreme_high_low" class="seasons col-xs-6">
                 <h2>Average max/min high/low</h2>
                 <div class="row">
                     <div class="col-xs-2 offset-xs-2">
                         <p class="high_bound">120</p>
-                        <div class="temp_slider apr"></div>
+                        <div class="temp_slider apr" id="test"></div>
                         <p class="low_bound">-20</p>
                     </div>
                     <div class="col-xs-2">
@@ -125,6 +144,12 @@
                         <p class="low_bound">-20</p>
                     </div>
                 </div>
+                <div class="row">
+                    <div class="col-xs-8 offset-xs-2">
+                        <input type="checkbox" id="extreme_high_low_lock" name="extreme_high_low_lock"/>
+                        <label for="extreme_high_low_lock">Lock sliders</label>
+                    </div>
+                </div>
             </div>
         </div>
 
@@ -136,9 +161,9 @@
         </div>
 
 
-        <ol class="city_list">
+        <ul class="city_list">
 
-        </ol>
+        </ul>
     </div>
     <script src="jquery-3.1.0.min.js"></script>
 
