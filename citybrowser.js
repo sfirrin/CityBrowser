@@ -7,6 +7,7 @@ function initializeSliders(cities) {
                 connect: true,
                 orientation: 'vertical',
                 direction: 'rtl',
+                step: 1,
                 range: {
                     'min': -20,
                     'max': 120
@@ -23,6 +24,7 @@ function initializeSliders(cities) {
                 connect: true,
                 orientation: 'vertical',
                 direction: 'rtl',
+                step: 1,
                 range: {
                     'min': -20,
                     'max': 120
@@ -142,6 +144,43 @@ function initializeSliders(cities) {
 // End initialize sliders
 }
 
+function getCityDiv(city) {
+    var cityLi = $('<li></li>');
+    var cityDiv = $('<div></div>').addClass('row');
+    var leftSection = $('<div></div>').addClass('col-xs-3');
+    var rightSection = $('<div></div>').addClass('col-xs-9');
+    var thumbLinkWrapper = $('<a target="_blank" href="' + city.photo_details_url + '"></a>');
+    var thumbContainer = $('<div></div>').addClass('thumb');
+    thumbContainer.append($('<img src="city_images/' + city.id + '.jpg" />').addClass('img-responsive'));
+    thumbLinkWrapper.append(thumbContainer);
+    leftSection.append(thumbLinkWrapper);
+    rightSection.append($('<h4></h4>').text(city.name));
+    var wiki_info = $('<a target="_blank"></a>').attr('href', city.wiki);
+    wiki_info.append($('<p></p>').text(city.wiki_intro));
+    rightSection.append(wiki_info);
+    cityDiv.append(leftSection, rightSection);
+
+    cityLi.append(cityDiv);
+    return cityLi;
+}
+
+function getCityDivMap(cities) {
+    cityDivMap = {};
+    // console.log(cities);
+    $.each(cities.responseJSON, function(i, city) {
+        // console.log(city.name);
+        cityDivMap[city.id] = getCityDiv(city);
+    });
+}
+
+function initializeListAndSliders() {
+
+    cities =  $.getJSON('cities.json', function(response) {
+        getCityDivMap(cities);
+        initializeSliders(cities);
+    });
+}
+
 var filters = {
     'population': [-100, 999999999],
     'mean_precip': {
@@ -167,44 +206,6 @@ var filters = {
     },
     'region': ['Northeast', 'South', 'West', 'Southwest', 'Midwest']
 };
-
-function getCityDiv(city) {
-    var cityLi = $('<li></li>');
-    var cityDiv = $('<div></div>').addClass('row');
-    var leftSection = $('<div></div>').addClass('col-xs-3');
-    var rightSection = $('<div></div>').addClass('col-xs-9');
-    leftSection.append($('<img src="city_images/' + city.id + '.jpg" />').addClass('img-responsive'));
-
-    rightSection.append($('<h4></h4>').text(city.name));
-    rightSection.append($('<p></p>').text(city.wiki_intro));
-    cityDiv.append(leftSection, rightSection);
-
-    cityLi.append(cityDiv);
-    return cityLi;
-}
-
-function getCityDivMap(cities) {
-    cityDivMap = {};
-    // console.log(cities);
-    $.each(cities.responseJSON, function(i, city) {
-        // console.log(city.name);
-        cityDivMap[city.id] = getCityDiv(city);
-    });
-}
-
-function initializeListAndSliders() {
-
-    cities =  $.getJSON('cities.json', function(response) {
-//                console.log(response);
-
-        // $.each(response, function(i, city) {
-        //     var cityDiv = getCityDiv(city);
-        //     $('.city_list').append(cityDiv);
-        // });
-        getCityDivMap(cities);
-        initializeSliders(cities);
-    });
-}
 
 var lockUpdateInProgress;
 var cityDivMap;

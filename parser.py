@@ -396,6 +396,41 @@ def remove_noncentral_months(city):
                 trimmed_climate[stat][month] = original_climate[stat][month]
     city['climate'] = trimmed_climate
 
+def add_city_photos_intros(cities, download=False):
+    """
+    Given a list of city dictionaries, mutates each city to include a properties for
+    photo, the page's intro paragraph, and the wikimedia photo details page url
+    Can also download the thumbnails to disk
+    :param cities: City dictionary as found in get_cities
+    :param download: Determines whether the thumbnails will be downloaded or not
+    :return: Nothing, only mutates the cities
+    """
+
+    image_name_pattern = re.compile(r'\d+px-(.*)')
+    for city in cities:
+        remove_noncentral_months(city)
+        id = city['id']
+        city_file = open('city_pages/' + id + '.html')
+        city_wiki = BeautifulSoup(city_file, 'html.parser')
+        intro = city_wiki.find(id='mw-content-text').find('p', recursive=False).text
+        # Removing citations
+        intro = re.sub(r'\[\w+\]', '', intro)
+        intro = re.sub(r' \(.+?\)', '', intro)
+        intro = re.sub(r'/*/', '', intro)
+        thumb_url = city_wiki.find(class_='infobox').find('img')['src'][2:]
+        image_name_match = re.search(image_name_pattern, thumb_url)
+        if image_name_match is None:
+            image_name = thumb_url.split('/')[-1]
+        else:
+            image_name = image_name_match.group(1)
+        if download:
+            urllib.urlretrieve('http://' + thumb_url, 'city_images/' + id + '.jpg')
+            time.sleep(0.5)
+        city['photo_details_url'] = 'https://commons.wikimedia.org/wiki/File:' + image_name
+        # print(city['photo_details_url'])
+        city['photo_url'] = thumb_url
+        city['wiki_intro'] = intro
+
 
 def main():
     raleigh = (35.7796, -78.6382)
@@ -419,26 +454,13 @@ def main():
     # pprint(get_weather(asheville))
     # pprint(get_nearest_station(raleigh, stations))
     cities = get_cities(stations)
+
+    add_city_photos_intros(cities)
     # for city in cities:
     #     print(city['climate']['station']['ghcn_id'])
     # template_filler.get_weatherbox(cities[0])
     # #
-    for city in cities:
-        remove_noncentral_months(city)
-        id = city['id']
-        city_file = open('city_pages/' + id + '.html')
-        city_wiki = BeautifulSoup(city_file, 'html.parser')
-        intro = city_wiki.find(id='mw-content-text').find('p', recursive=False).text
-        # Removing citations
-        intro = re.sub(r'\[\w+\]', '', intro)
-        intro = re.sub(r' \(.+?\)', '', intro)
-        intro = re.sub(r'/*/', '', intro)
-        photo_url = city_wiki.find(class_='infobox').find('img')['src'][2:]
-        urllib.urlretrieve('http://' + photo_url, 'city_images/' + id + '.jpg')
-        city['photo_url'] = photo_url
-        city['wiki_intro'] = intro
-        print(intro)
-        time.sleep(0.5)
+
         # print(photo_url)
 
 
