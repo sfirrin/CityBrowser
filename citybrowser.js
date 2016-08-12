@@ -7,7 +7,7 @@ function initializeSliders(cities) {
                 connect: true,
                 orientation: 'vertical',
                 direction: 'rtl',
-                step: 2,
+                step: 1,
                 range: {
                     'min': -20,
                     'max': 120
@@ -24,7 +24,7 @@ function initializeSliders(cities) {
                 connect: true,
                 orientation: 'vertical',
                 direction: 'rtl',
-                step: 2,
+                step: 1,
                 range: {
                     'min': -20,
                     'max': 120
@@ -33,36 +33,39 @@ function initializeSliders(cities) {
         }
 
 
-        obj.noUiSlider.on('update', function(values, handle) {
+        obj.noUiSlider.on('set', function(values, handle) {
 
-            // Updating the labels for the temp sliders
-            var value = values[handle];
-            var highBound = obj.previousElementSibling;
-            var lowBound = obj.nextElementSibling;
-
-
-
-            var setting_high = handle === 1;
-
-            var highChange = setting_high ? value - highBound.textContent : 0;
-            var lowChange = setting_high ? 0 : value - lowBound.textContent;
-
-            if (setting_high) {
-                highBound.textContent = Math.round(value);
-            } else {
-                lowBound.textContent = Math.round(value);
-            }
-
-
-
-            // Applying the filters to the shown cities
             var variable = $(obj).closest('.seasons').attr('id');
             var season = $(obj).attr('class').split(' ')[1];
 
+            // Updating the labels for the temp sliders
+            // console.log('values ' + values);
+            var value = values[handle];
+
+            // Gets the previous values from the filters object to determine change
+            var lowBound = filters[variable][season][0];
+            var highBound = filters[variable][season][1];
+
+            // The input boxes for temp
+            var highBoundBox = obj.previousElementSibling;
+            var lowBoundBox = obj.nextElementSibling;
+
+            var setting_high = handle === 1;
+
+            var lowChange = setting_high ? 0 : value - lowBound;
+            var highChange = setting_high ? value - highBound : 0;
+
+            if (setting_high) {
+                highBoundBox.value = Math.round(value);
+            } else {
+                lowBoundBox.value = Math.round(value);
+            }
+
+
             var isLocked = $('#' + variable + '_lock').is(':checked');
 
-
-
+            // Applying the filters to the shown cities
+            // console.log('Change ' + [highChange, lowChange]);
             if (isLocked && !lockUpdateInProgress) {
                 // TODO: Optimize this so it's not super slow
                 // Changing the other sliders in this variable
@@ -83,7 +86,7 @@ function initializeSliders(cities) {
 
             // console.log(isLocked);
             // console.log(variable + ' ' + season);
-            filters[variable][season]= [lowBound.textContent, highBound.textContent];
+            filters[variable][season] = [values[0], values[1]];
             updateList();
         });
     });
@@ -137,6 +140,7 @@ function initializeSliders(cities) {
         }
     });
 
+    // Adding change listeners to the rent and population sliders
     $.each([pop_slider, rent_slider], function(index, slider) {
         slider.noUiSlider.on('update', function(values, handle) {
             var value = values[handle];
@@ -157,12 +161,18 @@ function initializeSliders(cities) {
         });
     });
 
-    rent_slider.noUiSlider.on('update', function(values, handle) {
-        var value = values[handle];
-        var low_bound = rent_slider.previousElementSibling;
-        var high_bound = rent_slider.nextElementSibling;
-        var setting_high = handle === 1;
+    // Adding change listeners to the upper and lower bound input boxes
+    var highBoundBoxes = $('.high_bound');
+    highBoundBoxes.change(function(event) {
+        var slider = event.currentTarget.nextElementSibling;
+        slider.noUiSlider.set([null, event.currentTarget.value])
+    });
 
+    var lowBoundBoxes = $('.low_bound');
+    lowBoundBoxes.change(function(event) {
+        // console.log(event.currentTarget);
+        var slider = event.currentTarget.previousElementSibling;
+        slider.noUiSlider.set([event.currentTarget.value, null]);
     });
 
     function updateList() {
@@ -251,28 +261,29 @@ var filters = {
     'population': [-100, 999999999],
     'median_2br_rent': [-1, 99999],
     'mean_precip': {
-        'apr': [-999, 999],
-        'jul': [-999, 999],
-        'oct': [-999, 999],
-        'jan': [-999, 999],
-        'year': [-999, 999]
+        'apr': [-20, 120],
+        'jul': [-20, 120],
+        'oct': [-20, 120],
+        'jan': [-20, 120],
+        'year': [-20, 120]
     },
     'avg_high_low': {
-        'apr': [-999, 999],
-        'jul': [-999, 999],
-        'oct': [-999, 999],
-        'jan': [-999, 999],
-        'year': [-999, 999]
+        'apr': [-20, 120],
+        'jul': [-20, 120],
+        'oct': [-20, 120],
+        'jan': [-20, 120],
+        'year': [-20, 120]
     },
     'extreme_high_low': {
-        'apr': [-999, 999],
-        'jul': [-999, 999],
-        'oct': [-999, 999],
-        'jan': [-999, 999],
-        'year': [-999, 999]
+        'apr': [-20, 120],
+        'jul': [-20, 120],
+        'oct': [-20, 120],
+        'jan': [-20, 120],
+        'year': [-20, 120]
     },
     'region': ['Northeast', 'South', 'West', 'Southwest', 'Midwest']
 };
+
 
 var lockUpdateInProgress;
 var cityDivMap;
