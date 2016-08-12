@@ -9,6 +9,7 @@ import template_filler
 import json
 import urllib
 import numpy as np
+import csv
 
 from math import radians, cos, sin, asin, sqrt
 
@@ -396,10 +397,53 @@ def remove_noncentral_months(city):
                 trimmed_climate[stat][month] = original_climate[stat][month]
     city['climate'] = trimmed_climate
 
-def add_city_photos_intros(cities, download=False):
+def add_median_rent(city, area_rent, county_rent):
+    """
+    Mutates the city dicitonary to add median rent
+    First tries to match a metro area to the city, and if it can't find one,
+    Uses the rent for the county the city is within
+    :param city: City dicitonary from get_cities (must have county in it)
+    :param area_rent: A list of metro areas names[0] and their median 2BR rent[1]
+    :param county_rent: List of county[0], state abbrev[1], and median rent[2]
+    :return: Nothing, just mutates the city
+    """
+
+    found = False
+    for area in area_rent:
+        if city['name'] == 'Saint Paul':
+            name_in_area = 'St. Paul'.lower() in area[0].lower()
+        elif city['name'] == 'Chesapeake':
+            # Chesapeake is in the same metro statistical area as Virginia Beach
+            name_in_area = 'Virginia Beach'.lower() in area[0].lower()
+        else:
+            try:
+                name_in_area = city['name'].lower() in area[0].lower()
+            except UnicodeDecodeError:
+                name_in_area = False
+        state_in_area = us_regions.US_STATE_ABBREV[city['state']].lower() in area[0].lower()
+        if name_in_area and state_in_area:
+            city['median_2br_rent'] = int(area[1])
+            found = True
+            break
+    if not found:
+        for county in county_rent:
+            city_in_county = city['county'].lower() in county[0].lower()
+            city_in_state = us_regions.US_STATE_ABBREV[city['state']].lower() in county[1].lower()
+            if city_in_county and city_in_state:
+                city['median_2br_rent'] = int(county[2])
+                found = True
+                break
+    print(city['name'] + ' ' + str(city['median_2br_rent']))
+    if not found:
+        print('\n' + city['name'] + ' not found\n')
+
+
+
+def add_city_info(cities, download=False):
     """
     Given a list of city dictionaries, mutates each city to include a properties for
-    photo, the page's intro paragraph, and the wikimedia photo details page url
+    photo, the page's intro paragraph, the city's county, and the wikimedia photo
+    details page url
     Can also download the thumbnails to disk
     :param cities: City dictionary as found in get_cities
     :param download: Determines whether the thumbnails will be downloaded or not
@@ -407,6 +451,30 @@ def add_city_photos_intros(cities, download=False):
     """
 
     image_name_pattern = re.compile(r'\d+px-(.*)')
+    city_county_exceptions = {'New York': 'New York', 'Chicago': 'Cook', 'Denver': 'Denver',
+                              'Washington': 'District of Columbia', 'San Francisco': 'San Francisco',
+                              'Colorado Springs': 'El Paso', 'New Orleans': 'Orleans', 'Anchorage':
+                              'Anchorage', 'Baton Rouge': 'East Baton Rouge', 'Shreveport': 'Caddo',
+                              'Augusta': 'Richmond', 'Fort Collins': 'Larimer', 'Lakewood': 'Jefferson',
+                              'Columbia': 'Richland', 'Thornton': 'Adams', 'New Haven': 'New Haven',
+                              'Lafayette': 'Lafayette', 'Aurora': '', 'Honolulu': 'Honolulu',
+                              'Collin': 'Denton', 'Athens': 'Clarke', 'Abiline': 'Taylor', 'Arvada':
+                              'Jefferson', 'Westminster': 'Adams', 'Pueblo': 'Pueblo', 'Greeley': 'Weld',
+                              'Boulder': 'Boulder', 'Centennial': 'Arapahoe', 'Richardson': 'Dallas',
+                              'Plano': 'Collin'
+                              }
+    # Getting the rent data
+    area_rent = []
+    with open('FMRArea_FY2016F_50_RevFinal.csv') as csvfile:
+        data = csv.reader(csvfile, delimiter=',')
+        for row in data:
+            area_rent.append([row[2].lower(), row[5].lower()])
+    county_rent = []
+    with open('FY2016F_50_RevFinal.csv') as csvfile:
+        data = csv.reader(csvfile, delimiter=',')
+        for row in data:
+            county_rent.append([row[12], row[16], row[2]])
+
     for city in cities:
         remove_noncentral_months(city)
         id = city['id']
@@ -426,7 +494,30 @@ def add_city_photos_intros(cities, download=False):
         if download:
             urllib.urlretrieve('http://' + thumb_url, 'city_images/' + id + '.jpg')
             time.sleep(0.5)
+        if city['name'] in city_county_exceptions.keys():
+            city['county'] = city_county_exceptions[city['name']]
+            # There are two cities called Aurora
+            if city['name'] == 'Aurora':
+                if city['state'] == 'Colorado':
+                    city['county'] = 'Arapahoe'
+                else:
+                    city['county'] = 'Kane'
+        else:
+            county_th = city_wiki.find(class_='infobox').find(
+                'th', text=re.compile(r'County'))
+            if county_th:
+                city['county'] = county_th.find_next('td').text.strip()
+            else:
+                # If there is no county field because there are multiple counties
+                counties_th = city_wiki.find(class_='infobox').find(
+                    'th', text=re.compile(r'Counties'))
+                county_list = counties_th.find_next('td').text.strip().split(', ')
+                # Uses the first county in the list
+                city['county'] = county_list[0]
+        rent_area_pattern = re.compile(city['name'] + r'.*' + us_regions.US_STATE_ABBREV[city['state']])
+        # print(city['county'])
         city['photo_details_url'] = 'https://commons.wikimedia.org/wiki/File:' + image_name
+        add_median_rent(city, area_rent, county_rent)
         # print(city['photo_details_url'])
         city['photo_url'] = thumb_url
         city['wiki_intro'] = intro
@@ -454,8 +545,9 @@ def main():
     # pprint(get_weather(asheville))
     # pprint(get_nearest_station(raleigh, stations))
     cities = get_cities(stations)
+    # cities = json.load(open('cities.json', 'rb'))
 
-    add_city_photos_intros(cities)
+    add_city_info(cities)
     # for city in cities:
     #     print(city['climate']['station']['ghcn_id'])
     # template_filler.get_weatherbox(cities[0])

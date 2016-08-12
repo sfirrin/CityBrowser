@@ -7,7 +7,7 @@ function initializeSliders(cities) {
                 connect: true,
                 orientation: 'vertical',
                 direction: 'rtl',
-                step: 1,
+                step: 2,
                 range: {
                     'min': -20,
                     'max': 120
@@ -24,7 +24,7 @@ function initializeSliders(cities) {
                 connect: true,
                 orientation: 'vertical',
                 direction: 'rtl',
-                step: 1,
+                step: 2,
                 range: {
                     'min': -20,
                     'max': 120
@@ -99,6 +99,7 @@ function initializeSliders(cities) {
             '95%': 1000000,
             'max': 9000000
         },
+        step: 5000,
         pips: {
             mode: 'positions',
             values: [0, 20, 40, 60, 80, 100],
@@ -120,11 +121,57 @@ function initializeSliders(cities) {
         updateList();
     });
 
+    var rent_slider = $('#rent_slider')[0];
+    noUiSlider.create(rent_slider, {
+        start: [200, 5000],
+        connect: true,
+        range: {
+            'min': 600,
+            'max': 2600
+        },
+        step: 20,
+        pips: {
+            mode: 'positions',
+            values: [0, 20, 40, 60, 80, 100],
+            density: 2
+        }
+    });
+
+    $.each([pop_slider, rent_slider], function(index, slider) {
+        slider.noUiSlider.on('update', function(values, handle) {
+            var value = values[handle];
+            var low_bound = slider.previousElementSibling;
+            var high_bound = slider.nextElementSibling;
+            var setting_high = handle === 1;
+            if (setting_high) {
+                high_bound.textContent = Math.round(value);
+            } else {
+                low_bound.textContent = Math.round(value);
+            }
+            if (index === 0) {
+                filters.population = [low_bound.textContent, high_bound.textContent];
+            } else {
+                filters.median_2br_rent = [low_bound.textContent, high_bound.textContent];
+            }
+            updateList();
+        });
+    });
+
+    rent_slider.noUiSlider.on('update', function(values, handle) {
+        var value = values[handle];
+        var low_bound = rent_slider.previousElementSibling;
+        var high_bound = rent_slider.nextElementSibling;
+        var setting_high = handle === 1;
+
+    });
+
     function updateList() {
         // console.log(cities.responseJSON);
         var list = $('.city_list');
         var filteredCities = $.grep(cities.responseJSON, function( city, i ) {
-            var pass = city.population > filters.population[0] && city.population < filters.population[1];
+            var pass = city.population > filters.population[0] && city.population < filters.population[1]
+                && city.median_2br_rent > filters.median_2br_rent[0]
+                && city.median_2br_rent < filters.median_2br_rent[1];
             if (!pass) return false;
             $.each(['apr', 'jul', 'oct', 'jan', 'year'], function(index, season) {
                 pass = pass
@@ -139,6 +186,7 @@ function initializeSliders(cities) {
         $.each(filteredCities, function( i, city ) {
             var cityDiv = cityDivMap[city.id];
             list.append(cityDiv);
+            return i <= 50;
         })
     }
 // End initialize sliders
@@ -155,6 +203,24 @@ function getCityDiv(city) {
     thumbLinkWrapper.append(thumbContainer);
     leftSection.append(thumbLinkWrapper);
     rightSection.append($('<h4></h4>').text(city.name));
+    var table = $('<table class="table"></table>');
+    var headings = $('<tr></tr>');
+    headings.append($('<th>Month</th>'));
+    headings.append($('<th>Average high</th>'));
+    headings.append($('<th>Average low</th>'));
+    headings.append($('<th>Average monthly max</th>'));
+    headings.append($('<th>Average monthly min</th>'));
+    headings.append($('<th>Precipitation</th>'));
+    table.append(headings);
+    $.each(['apr', 'jul', 'oct', 'jan', 'year'], function(i, month) {
+        var month_row = $('<tr><th>' + month + '</th></tr>');
+        $.each(['mean_high', 'mean_low', 'mean_max_high', 'mean_min_low', 'mean_precip'], function(i, stat) {
+            month_row.append($('<td>' + city.climate[stat][month] + '</td>'));
+        });
+        table.append(month_row);
+    });
+
+    rightSection.append(table);
     var wiki_info = $('<a target="_blank"></a>').attr('href', city.wiki);
     wiki_info.append($('<p></p>').text(city.wiki_intro));
     rightSection.append(wiki_info);
@@ -183,6 +249,7 @@ function initializeListAndSliders() {
 
 var filters = {
     'population': [-100, 999999999],
+    'median_2br_rent': [-1, 99999],
     'mean_precip': {
         'apr': [-999, 999],
         'jul': [-999, 999],
