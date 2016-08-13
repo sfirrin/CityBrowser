@@ -21,13 +21,43 @@
 }
 
 .year .noUi-connect {
-    background: #666666
+    background: #666666;
+}
+
+.apr_label {
+    color: #86B953;
+}
+
+.jul_label {
+    color: #D92628;
+}
+
+.oct_label {
+    color: #FDC51A;
+}
+
+.jan_label {
+    color:#7BAFD4;
+}
+
+.year_label {
+    color: #666666;
+}
+
+.apr_label, .jul_label, .oct_label, .jan_label, .year_label {
+    display: inline;
+    margin: 10px;
+    font-size: larger;
+}
+
+.month_colors {
+    font-size: large;
 }
 
 .seasons {
     float: left;
     display: inline-block;
-    padding-right: 40px;
+    padding-right: 30px;
 }
 
 .city_list {
@@ -35,14 +65,23 @@
 }
 
 .seasons .low_bound {
-    margin-top: 14px;
+    margin-top: 16px;
     width: 45px;
     position: relative;
-    left: -10px;
+    left: -13px;
 }
 .seasons .high_bound {
     margin-bottom: 20px;
     width: 45px;
+    position: relative;
+    left: -13px;
+}
+
+.seasons h2, .population h2 {
+    margin-top: 0;
+}
+
+.seasons h2 {
     position: relative;
     left: -10px;
 }
@@ -83,4 +122,30 @@ a {
 a:hover {
     color: #7BAFD4;
     text-decoration: none;
+}
+
+body {
+    font-family: "Oxygen", sans-serif;
+    font-weight: 400;
+}
+
+h1 {
+    text-align: center;
+    font-size: 3em;
+}
+
+.population .low_bound {
+    text-align: right;
+}
+
+.rent .low_bound {
+    text-align: right;
+}
+
+.population .noUi-value-large {
+    margin-top: 5px;
+}
+
+.rent .noUi-value-large {
+    margin-top: 5px;
 }

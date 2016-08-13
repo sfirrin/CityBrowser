@@ -186,16 +186,16 @@ def get_station_weather(station):
 
     mean_high_line = get_line_with_id(station_id, 'noaa/mly-tmax-normal.txt')
     weather['mean_high'] = get_monthly_normals(mean_high_line)
-    weather['mean_high']['year'] = sum(weather['mean_high'].values()) / 12.0
+    weather['mean_high']['year'] = round(sum(weather['mean_high'].values()) / 12.0, 2)
 
     mean_low_line = get_line_with_id(station_id, 'noaa/mly-tmin-normal.txt')
     weather['mean_low'] = get_monthly_normals(mean_low_line)
-    weather['mean_low']['year'] = sum(weather['mean_low'].values()) / 12.0
+    weather['mean_low']['year'] = round(sum(weather['mean_low'].values()) / 12.0, 2)
 
     mean_precip_line = get_line_with_id(station_id, 'noaa/mly-prcp-normal.txt')
     weather['mean_precip'] = \
         get_monthly_normals(mean_precip_line, temp_not_precip=False)
-    weather['mean_precip']['year'] = sum(weather['mean_precip'].values())
+    weather['mean_precip']['year'] = round(sum(weather['mean_precip'].values()), 2)
 
     weather.update(get_min_max_mean_record(station_id))
 
@@ -258,7 +258,6 @@ def get_extremes_from_lines(lines, max_not_min=True):
 
     month_mean_extreme = {}
     month_record_extreme = {}
-    from pprint import pprint
 
     for i in range(12):
         extremes = month_extremes[i + 1]
@@ -271,7 +270,7 @@ def get_extremes_from_lines(lines, max_not_min=True):
         month_record_extreme[months[i]] = round(c_to_f(record_extreme), 2)
 
     yearly_mean_of_extremes = round(sum(month_mean_extreme.values()) / float(len(month_mean_extreme.values())), 2)
-    month_mean_extreme['year'] = get_mean_yearly_extreme(month_extremes, max_not_min)
+    month_mean_extreme['year'] = round(get_mean_yearly_extreme(month_extremes, max_not_min), 2)
 
     if max_not_min:
         month_record_extreme['year'] = round(max(month_record_extreme.values()), 2)
@@ -318,6 +317,7 @@ def get_min_max_mean_record(station_id):
     # pprint(mins_and_maxes)
 
     return mins_and_maxes
+
 
 def convert_climate_to_seasons(city):
     """
@@ -374,6 +374,7 @@ def convert_climate_to_seasons(city):
     seasons_climate['station'] = climate['station']
     # pprint(seasons_climate)
     city['climate'] = seasons_climate
+
 
 def remove_noncentral_months(city):
     """
