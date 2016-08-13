@@ -213,24 +213,24 @@ function getCityDiv(city) {
     thumbLinkWrapper.append(thumbContainer);
     leftSection.append(thumbLinkWrapper);
     rightSection.append($('<h4></h4>').text(city.name));
-    var table = $('<table class="table"></table>');
-    var headings = $('<tr></tr>');
-    headings.append($('<th>Month</th>'));
-    headings.append($('<th>Average high</th>'));
-    headings.append($('<th>Average low</th>'));
-    headings.append($('<th>Average monthly max</th>'));
-    headings.append($('<th>Average monthly min</th>'));
-    headings.append($('<th>Precipitation</th>'));
-    table.append(headings);
-    $.each(['apr', 'jul', 'oct', 'jan', 'year'], function(i, month) {
-        var month_row = $('<tr><th>' + month + '</th></tr>');
-        $.each(['mean_high', 'mean_low', 'mean_max_high', 'mean_min_low', 'mean_precip'], function(i, stat) {
-            month_row.append($('<td>' + city.climate[stat][month] + '</td>'));
-        });
-        table.append(month_row);
-    });
-
-    rightSection.append(table);
+    // var table = $('<table class="table"></table>');
+    // var headings = $('<tr></tr>');
+    // headings.append($('<th>Month</th>'));
+    // headings.append($('<th>Average high</th>'));
+    // headings.append($('<th>Average low</th>'));
+    // headings.append($('<th>Average monthly max</th>'));
+    // headings.append($('<th>Average monthly min</th>'));
+    // headings.append($('<th>Precipitation</th>'));
+    // table.append(headings);
+    // $.each(['apr', 'jul', 'oct', 'jan', 'year'], function(i, month) {
+    //     var month_row = $('<tr><th>' + month + '</th></tr>');
+    //     $.each(['mean_high', 'mean_low', 'mean_max_high', 'mean_min_low', 'mean_precip'], function(i, stat) {
+    //         month_row.append($('<td>' + city.climate[stat][month] + '</td>'));
+    //     });
+    //     table.append(month_row);
+    // });
+    //
+    // rightSection.append(table);
     var wiki_info = $('<a target="_blank"></a>').attr('href', city.wiki);
     wiki_info.append($('<p></p>').text(city.wiki_intro));
     rightSection.append(wiki_info);

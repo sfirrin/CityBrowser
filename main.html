@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <title>CityBrowser</title>
 
-    <link href='https://fonts.googleapis.com/css?family=Oxygen' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Oxygen:400,700' rel='stylesheet' type='text/css'>
 
     <link rel="stylesheet" type="text/css" href="noUiSlider.8.5.1/nouislider.min.css" />
     <!-- Latest compiled and minified CSS -->
@@ -17,13 +17,13 @@
 
 </head>
 <body>
-    <div class="container">
+    <div class="container-fluid">
         <h1>City Browser</h1>
         <hr />
-        <div class="temperatures">
+        <div class="adjusters col-xs-4">
             <div class="row">
-                <div id="avg_high_low" class="seasons col-xs-12 col-sm-6">
-                    <h2>Average highs and lows</h2>
+                <div id="avg_high_low" class="seasons col-xs-12 col-lg-6">
+                    <h2>Average monthly highs and lows</h2>
                     <div class="row">
                         <div class="col-xs-2 offset-xs-2">
                             <input type="number" value="120" min="-19" max="120" step="1" class="high_bound" />
@@ -58,8 +58,8 @@
                         </div>
                     </div>
                 </div>
-                <div id="extreme_high_low" class="seasons col-xs-12 col-sm-6">
-                    <h2>Average monthly min and max</h2>
+                <div id="extreme_high_low" class="seasons col-xs-12 col-lg-6">
+                    <h2>Average monthly maxes and mins</h2>
                     <div class="row">
                         <div class="col-xs-2 offset-xs-2">
                             <input type="number" value="120" min="-19" max="120" step="1" class="high_bound" />
@@ -101,27 +101,30 @@
             <p class="jan_label">January</p>
             <p class="year_label">Year</p>
             <br />
+
+            <hr />
+            <div class="row population">
+                <h2>Population</h2>
+                <p class="low_bound col-xs-2">100</p>
+                <div id="pop_slider" class="col-xs-8"></div>
+                <p class="high_bound col-xs-2">10000</p>
+            </div>
+
+            <div class="row rent">
+                <h2>Median Two Bedroom Rent</h2>
+                <p class="low_bound col-xs-2">100</p>
+                <div id="rent_slider" class="col-xs-8"></div>
+                <p class="high_bound col-xs-2">10000</p>
+            </div>
+        <!-- End of adjusters div -->
         </div>
-        <hr />
-        <div class="row population">
-            <h2>Population</h2>
-            <p class="low_bound col-xs-2">100</p>
-            <div id="pop_slider" class="col-xs-8"></div>
-            <p class="high_bound col-xs-2">10000</p>
+
+        <div class="scrollable cities_container col-xs-8">
+            <ul class="city_list">
+
+            </ul>
         </div>
 
-        <div class="row rent">
-            <h2>Median Two Bedroom Rent</h2>
-            <p class="low_bound col-xs-2">100</p>
-            <div id="rent_slider" class="col-xs-8"></div>
-            <p class="high_bound col-xs-2">10000</p>
-        </div>
-
-        <hr />
-
-        <ul class="city_list">
-
-        </ul>
     </div>
     <script src="jquery-3.1.0.min.js"></script>
 
