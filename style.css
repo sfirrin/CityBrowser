@@ -156,3 +156,9 @@ h1 {
     max-height: 88vh;
     overflow-y: scroll;
 }
+
+#toggle_sidebar {
+    position: absolute;
+    left: 23px;
+    top: 35px;
+}

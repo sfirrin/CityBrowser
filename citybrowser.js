@@ -175,6 +175,25 @@ function initializeSliders(cities) {
         slider.noUiSlider.set([event.currentTarget.value, null]);
     });
 
+    // Setting up the sidebar toggle button
+    $('#toggle_sidebar').on('click', function() {
+        var currentlyOn = $(this).attr('aria-pressed') === 'true';
+        console.log(currentlyOn);
+        var sidebar = $('.filters');
+        var citiesList = $('.cities_container');
+        if (currentlyOn) {
+            // sidebar.removeClass('col-xs-4');
+            sidebar.hide();
+            citiesList.removeClass('col-xs-8');
+            citiesList.addClass('col-xs-12');
+
+        } else {
+            sidebar.show();
+            citiesList.removeClass('col-xs-12');
+            citiesList.addClass('col-xs-8');
+        }
+    });
+
     function updateList() {
         // console.log(cities.responseJSON);
         var list = $('.city_list');
