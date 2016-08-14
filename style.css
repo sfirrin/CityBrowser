@@ -44,9 +44,9 @@
     color: #666666;
 }
 
-.apr_label, .jul_label, .oct_label, .jan_label, .year_label {
-    display: inline;
-    margin: 10px;
+.month_labels {
+    text-align: justify;
+    text-justify: inter-word;
     font-size: larger;
     font-weight: 700;
 }
