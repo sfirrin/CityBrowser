@@ -133,7 +133,6 @@ body {
 h1 {
     text-align: center;
     font-size: 3em;
-    height: 5vh;
 }
 
 .population .low_bound {
@@ -152,13 +151,16 @@ h1 {
     margin-top: 5px;
 }
 
-.cities_container {
-    max-height: 88vh;
-    overflow-y: scroll;
+
+#filters {
+    background: #FFF;
+    padding-top: 20px;
 }
 
-#toggle_sidebar {
-    position: absolute;
-    left: 23px;
-    top: 25px;
+.rent {
+    padding-bottom: 80px;
+}
+
+.cities_container {
+    padding-top: 70px;
 }
