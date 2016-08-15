@@ -117,7 +117,7 @@ li {
 
 a {
     text-decoration: none;
-    color: #000000;
+    color: #7BAFD4;
 }
 
 a:hover {
@@ -155,6 +155,9 @@ h1 {
 #filters {
     background: #FFF;
     padding-top: 20px;
+    -webkit-box-shadow: 1px 0px 5px 0px rgba(82,82,82,0.25);
+    -moz-box-shadow: 1px 0px 5px 0px rgba(82,82,82,0.25);
+    box-shadow: 1px 0px 5px 0px rgba(82,82,82,0.25);
 }
 
 .rent {
@@ -163,4 +166,16 @@ h1 {
 
 .cities_container {
     padding-top: 70px;
+}
+
+.navbar-header {
+    float: left;
+    text-align: center;
+    width: 100%;
+}
+.navbar-brand {
+    float:none;
+    position: relative;
+    top: 15px;
+    font-size: 2em;
 }

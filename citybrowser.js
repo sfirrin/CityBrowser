@@ -199,6 +199,11 @@ function initializeSliders(cities) {
             return i <= 50;
         })
     }
+
+    // Slide out filters
+    setTimeout(function() {
+        $('button').click();
+    }, 300);
 // End initialize sliders
 }
 
@@ -212,7 +217,9 @@ function getCityDiv(city) {
     thumbContainer.append($('<img src="city_images/' + city.id + '.jpg" />').addClass('img-responsive'));
     thumbLinkWrapper.append(thumbContainer);
     leftSection.append(thumbLinkWrapper);
-    rightSection.append($('<h4></h4>').text(city.name));
+    var heading = $('<a target="_blank"></a>').attr('href', city.wiki);
+    heading.append($('<h4></h4>').text(city.name));
+    rightSection.append(heading);
     // var table = $('<table class="table"></table>');
     // var headings = $('<tr></tr>');
     // headings.append($('<th>Month</th>'));
@@ -231,8 +238,7 @@ function getCityDiv(city) {
     // });
     //
     // rightSection.append(table);
-    var wiki_info = $('<a target="_blank"></a>').attr('href', city.wiki);
-    wiki_info.append($('<p></p>').text(city.wiki_intro));
+    var wiki_info = $('<p></p>').text(city.wiki_intro);
     rightSection.append(wiki_info);
     cityDiv.append(leftSection, rightSection);
 
