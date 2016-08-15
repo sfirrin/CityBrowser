@@ -182,7 +182,6 @@ function initializeSliders(cities) {
         var sidebar = $('.filters');
         var citiesList = $('.cities_container');
         if (currentlyOn) {
-            // sidebar.removeClass('col-xs-4');
             sidebar.hide();
             citiesList.removeClass('col-xs-8');
             citiesList.addClass('col-xs-12');
