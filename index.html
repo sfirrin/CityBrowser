@@ -30,6 +30,7 @@
                 <a class="navbar-brand" href="#">
                     City Browser
                 </a>
+                <a href="about.html" class="about_link">About</a>
             </div>
         </div>
     </div>
@@ -111,16 +112,10 @@
                         </div>
                     </div>
                 </div>
-                <p class="month_labels">
-                    <span class="apr_label">April</span>
-                    <span class="jul_label">July</span>
-                    <span class="oct_label">October</span>
-                    <span class="jan_label">January</span>
-                    <span class="year_label">Year</span>
-                </p>
-                <br />
 
+                <br />
                 <hr />
+
                 <div class="row population">
                     <h2>Population</h2>
                     <p class="low_bound col-xs-2">100</p>
@@ -129,12 +124,26 @@
                 </div>
 
                 <div class="row rent">
-                    <h2>Median Two Bedroom Rent</h2>
+                    <h2>Median two bedroom rent</h2>
                     <p class="low_bound col-xs-2">100</p>
                     <div id="rent_slider" class="col-xs-8"></div>
                     <p class="high_bound col-xs-2">10000</p>
                 </div>
-                <!-- End of adjusters div -->
+
+                <br />
+                <hr />
+
+                <h2>Number of cities to display</h2>
+                <p>More cities reduces performance</p>
+                <div id="number_buttons" class="btn-group" role="group" aria-label="...">
+                    <button type="button" class="btn btn-default" id="btn_25" >25</button>
+                    <button type="button" class="btn btn-default">50</button>
+                    <button type="button" class="btn btn-default">100</button>
+                    <button type="button" class="btn btn-default">150</button>
+                    <button type="button" class="btn btn-default">200</button>
+                    <button type="button" class="btn btn-default">304</button>
+                </div>
+                <!-- End of filters div -->
             </div>
 
             <div class="cities_container main col-md-7 col-md-offset-5">

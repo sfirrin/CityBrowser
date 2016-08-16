@@ -196,14 +196,40 @@ function initializeSliders(cities) {
         $.each(filteredCities, function( i, city ) {
             var cityDiv = cityDivMap[city.id];
             list.append(cityDiv);
-            return i <= 50;
+            return i <= displayedCities;
         })
     }
 
-    // Slide out filters
+    // Set up button to allow user to change number of displayed cities
+    var group = $('#number_buttons');
+
+
+    $.each(group.children(), function(index, btn) {
+        $(btn).on('click', function(event) {
+            console.log(event);
+            if (event.originalEvent) {
+                displayedCities = +btn.textContent;
+                updateList();
+            }
+            console.log(displayedCities);
+        });
+
+    });
+
+    $('#btn_25').click();
+
+    // Set up slider month labels
+    $.each($('.temp_slider .noUi-connect'), function(index, obj) {
+        var monthName = $(obj).closest('.temp_slider').attr('class').split(' ')[1];
+        monthName = monthAbbrMap[monthName];
+        $(obj).append($('<div>' + monthName + '</div>').addClass('slider_month'));
+    });
+
+    // Slide out filters after page load
     setTimeout(function() {
         $('button').click();
-    }, 300);
+    }, 350);
+
 // End initialize sliders
 }
 
@@ -290,7 +316,9 @@ var filters = {
     'region': ['Northeast', 'South', 'West', 'Southwest', 'Midwest']
 };
 
+var monthAbbrMap = {'apr': 'April', 'jul': 'July', 'oct': 'October', 'jan': 'January', 'year': 'Year'};
 
+var displayedCities = 25;
 var lockUpdateInProgress;
 var cityDivMap;
 var cities;

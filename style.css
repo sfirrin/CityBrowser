@@ -24,37 +24,6 @@
     background: #666666;
 }
 
-.apr_label {
-    color: #86B953;
-}
-
-.jul_label {
-    color: #D92628;
-}
-
-.oct_label {
-    color: #FDC51A;
-}
-
-.jan_label {
-    color:#7BAFD4;
-}
-
-.year_label {
-    color: #666666;
-}
-
-.month_labels {
-    text-align: justify;
-    text-justify: inter-word;
-    font-size: larger;
-    font-weight: 700;
-}
-
-.month_colors {
-    font-size: large;
-}
-
 .seasons {
     float: left;
     display: inline-block;
@@ -161,7 +130,7 @@ h1 {
 }
 
 .rent {
-    padding-bottom: 80px;
+    padding-bottom: 10px;
 }
 
 .cities_container {
@@ -173,9 +142,33 @@ h1 {
     text-align: center;
     width: 100%;
 }
+
 .navbar-brand {
     float:none;
     position: relative;
     top: 15px;
     font-size: 2em;
+}
+
+.about_link {
+    font-size: 1.1em;
+    position: relative;
+    top: 10px;
+    left: 12px;
+    float: right;
+}
+
+.slider_month {
+    transform: rotate(270deg);
+    transform-origin: left top 0;
+    position: relative;
+    top: 120px;
+    right: 2px;
+    color: white;
+    width: 120px;
+    text-align: center;
+}
+
+#number_buttons {
+    padding-bottom: 80px;
 }
