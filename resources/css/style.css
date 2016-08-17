@@ -154,9 +154,10 @@ h1 {
 .about_link {
     font-size: 1.1em;
     position: relative;
-    top: 10px;
+    top: 13px;
     left: 12px;
     float: right;
+    margin-right: 15px;
 }
 
 .slider_month {
@@ -196,4 +197,27 @@ h1 {
 
 .small_stats {
     padding-left: 0;
+}
+
+.population .noUi-connect, .rent .noUi-connect {
+    background: #7BAFD4;
+}
+
+#sort_buttons, #asc_desc {
+    float: left;
+    margin: 0 10px 5px 5px;
+}
+
+#sort_by_header {
+    margin-left: 5px;
+    margin-top: 0;
+}
+
+.temp_controls {
+    position: relative;
+    left: 12px;
+}
+
+.rent .high_bound, .population .high_bound {
+    padding-left: 4px;
 }

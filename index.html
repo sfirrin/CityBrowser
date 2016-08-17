@@ -39,8 +39,7 @@
     <div class="container-fluid">
         <div class="row">
             <div id="filters" class="col-xs-9 col-sm-7 col-md-5 sidebar sidebar-left sidebar-animate sidebar-md-show">
-                <div class="row">
-
+                    <h3 id="sort_by_header">Sort by</h3>
                     <div id="sort_buttons" class="btn-group" role="group" data-toggle="buttons">
                         <label type="button" class="btn btn-default active" id="sort_pop" >
                             <input type="radio" autocomplete="off" checked>Population
@@ -65,6 +64,26 @@
                         </label>
                     </div>
 
+
+
+                    <div class="row population">
+                        <h3 class="col-xs-12">Population</h3>
+                        <p class="low_bound col-xs-2">100</p>
+                        <div id="pop_slider" class="col-xs-8"></div>
+                        <p class="high_bound col-xs-2">10000</p>
+                    </div>
+
+                    <div class="row rent">
+                        <h3 class="col-xs-12">Median two bedroom rent</h3>
+                        <p class="low_bound col-xs-2">100</p>
+                        <div id="rent_slider" class="col-xs-8"></div>
+                        <p class="high_bound col-xs-2">10000</p>
+                    </div>
+
+                    <br />
+                    <hr />
+
+                <div class="row temp_controls">
                     <div id="avg_high_low" class="seasons col-xs-12 col-lg-6">
                         <h3>Average monthly highs and lows</h3>
                         <div class="row">
@@ -137,23 +156,6 @@
                             </div>
                         </div>
                     </div>
-                </div>
-
-                <br />
-                <hr />
-
-                <div class="row population">
-                    <h3>Population</h3>
-                    <p class="low_bound col-xs-2">100</p>
-                    <div id="pop_slider" class="col-xs-8"></div>
-                    <p class="high_bound col-xs-2">10000</p>
-                </div>
-
-                <div class="row rent">
-                    <h3>Median two bedroom rent</h3>
-                    <p class="low_bound col-xs-2">100</p>
-                    <div id="rent_slider" class="col-xs-8"></div>
-                    <p class="high_bound col-xs-2">10000</p>
                 </div>
 
                 <br />

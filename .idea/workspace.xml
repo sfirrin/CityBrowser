@@ -2,326 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="767eb99e-6c6a-4e34-ba64-1a1531fdf239" name="Default" comment="">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/cities.json" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/city_images/001.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/city_images/002.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/city_images/003.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/city_images/004.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/city_images/005.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/city_images/006.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/city_images/007.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/city_images/008.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/city_images/009.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/city_images/010.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/city_images/011.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/city_images/012.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/city_images/013.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/city_images/014.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/city_images/015.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/city_images/016.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/city_images/017.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/city_images/018.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/city_images/019.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/city_images/020.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/city_images/021.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/city_images/022.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/city_images/023.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/city_images/024.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/city_images/025.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/city_images/026.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/city_images/027.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/city_images/028.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/city_images/029.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/city_images/030.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/city_images/031.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/city_images/032.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/city_images/033.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/city_images/034.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/city_images/035.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/city_images/036.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/city_images/037.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/city_images/038.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/city_images/039.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/city_images/040.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/city_images/041.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/city_images/042.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/city_images/043.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/city_images/044.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/city_images/045.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/city_images/046.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/city_images/047.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/city_images/048.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/city_images/049.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/city_images/050.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/city_images/051.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/city_images/052.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/city_images/053.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/city_images/054.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/city_images/055.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/city_images/056.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/city_images/057.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/city_images/058.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/city_images/059.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/city_images/060.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/city_images/061.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/city_images/062.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/city_images/063.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/city_images/064.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/city_images/065.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/city_images/066.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/city_images/067.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/city_images/068.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/city_images/069.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/city_images/070.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/city_images/071.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/city_images/072.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/city_images/073.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/city_images/074.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/city_images/075.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/city_images/076.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/city_images/077.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/city_images/078.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/city_images/079.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/city_images/080.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/city_images/081.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/city_images/082.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/city_images/083.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/city_images/084.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/city_images/085.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/city_images/086.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/city_images/087.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/city_images/088.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/city_images/089.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/city_images/090.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/city_images/091.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/city_images/092.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/city_images/093.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/city_images/094.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/city_images/095.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/city_images/096.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/city_images/097.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/city_images/098.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/city_images/099.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/city_images/100.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/city_images/101.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/city_images/102.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/city_images/103.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/city_images/104.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/city_images/105.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/city_images/106.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/city_images/107.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/city_images/108.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/city_images/109.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/city_images/110.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/city_images/111.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/city_images/112.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/city_images/113.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/city_images/114.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/city_images/115.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/city_images/116.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/city_images/117.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/city_images/118.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/city_images/119.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/city_images/120.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/city_images/121.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/city_images/122.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/city_images/123.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/city_images/124.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/city_images/125.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/city_images/126.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/city_images/127.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/city_images/128.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/city_images/129.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/city_images/130.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/city_images/131.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/city_images/132.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/city_images/133.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/city_images/134.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/city_images/135.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/city_images/136.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/city_images/137.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/city_images/138.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/city_images/139.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/city_images/140.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/city_images/141.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/city_images/142.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/city_images/143.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/city_images/144.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/city_images/145.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/city_images/146.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/city_images/147.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/city_images/148.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/city_images/149.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/city_images/150.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/city_images/151.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/city_images/152.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/city_images/153.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/city_images/154.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/city_images/155.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/city_images/156.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/city_images/157.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/city_images/158.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/city_images/159.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/city_images/160.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/city_images/161.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/city_images/162.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/city_images/163.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/city_images/164.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/city_images/165.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/city_images/166.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/city_images/167.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/city_images/168.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/city_images/169.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/city_images/170.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/city_images/171.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/city_images/172.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/city_images/173.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/city_images/174.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/city_images/175.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/city_images/176.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/city_images/177.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/city_images/178.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/city_images/179.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/city_images/180.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/city_images/181.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/city_images/182.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/city_images/183.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/city_images/184.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/city_images/185.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/city_images/186.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/city_images/187.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/city_images/188.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/city_images/189.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/city_images/190.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/city_images/191.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/city_images/192.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/city_images/193.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/city_images/194.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/city_images/195.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/city_images/196.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/city_images/197.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/city_images/198.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/city_images/199.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/city_images/200.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/city_images/201.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/city_images/202.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/city_images/203.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/city_images/204.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/city_images/205.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/city_images/206.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/city_images/207.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/city_images/208.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/city_images/209.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/city_images/210.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/city_images/211.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/city_images/212.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/city_images/213.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/city_images/214.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/city_images/215.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/city_images/216.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/city_images/217.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/city_images/218.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/city_images/219.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/city_images/220.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/city_images/221.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/city_images/222.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/city_images/223.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/city_images/224.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/city_images/225.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/city_images/226.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/city_images/227.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/city_images/228.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/city_images/229.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/city_images/230.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/city_images/231.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/city_images/232.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/city_images/233.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/city_images/234.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/city_images/235.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/city_images/236.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/city_images/237.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/city_images/238.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/city_images/239.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/city_images/240.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/city_images/241.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/city_images/242.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/city_images/243.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/city_images/244.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/city_images/245.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/city_images/246.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/city_images/247.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/city_images/248.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/city_images/249.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/city_images/250.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/city_images/251.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/city_images/252.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/city_images/253.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/city_images/254.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/city_images/255.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/city_images/256.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/city_images/257.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/city_images/258.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/city_images/259.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/city_images/260.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/city_images/261.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/city_images/262.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/city_images/263.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/city_images/264.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/city_images/265.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/city_images/266.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/city_images/267.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/city_images/268.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/city_images/269.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/city_images/270.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/city_images/271.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/city_images/272.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/city_images/273.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/city_images/274.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/city_images/275.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/city_images/276.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/city_images/277.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/city_images/278.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/city_images/279.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/city_images/280.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/city_images/281.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/city_images/282.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/city_images/283.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/city_images/284.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/city_images/285.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/city_images/286.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/city_images/287.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/city_images/288.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/city_images/289.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/city_images/290.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/city_images/291.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/city_images/292.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/city_images/293.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/city_images/294.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/city_images/295.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/city_images/296.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/city_images/297.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/city_images/298.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/city_images/299.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/city_images/300.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/city_images/301.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/city_images/302.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/city_images/303.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/city_images/304.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/citybrowser.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/css/sidebar.css" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/jquery-3.1.0.min.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/noUiSlider.8.5.1/nouislider.css" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/noUiSlider.8.5.1/nouislider.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/noUiSlider.8.5.1/nouislider.min.css" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/noUiSlider.8.5.1/nouislider.min.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/noUiSlider.8.5.1/nouislider.pips.css" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/noUiSlider.8.5.1/nouislider.tooltips.css" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/noUiSlider.8.5.1/wNumb.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/sidebar.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/style.css" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/thumb.jpg" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/index.html" afterPath="$PROJECT_DIR$/index.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/css/style.css" afterPath="$PROJECT_DIR$/resources/css/style.css" />
     </list>
     <ignored path="Calculated Living.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -355,7 +37,7 @@
       <file leaf-file-name="us_regions.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/us_regions.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1715">
+            <state relative-caret-position="1617">
               <caret line="49" column="19" selection-start-line="49" selection-start-column="19" selection-end-line="49" selection-end-column="19" />
               <folding />
             </state>
@@ -365,9 +47,12 @@
       <file leaf-file-name="index.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/index.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="350">
-              <caret line="10" column="27" selection-start-line="10" selection-start-column="27" selection-end-line="10" selection-end-column="27" />
-              <folding />
+            <state relative-caret-position="1099">
+              <caret line="85" column="45" selection-start-line="85" selection-start-column="45" selection-end-line="85" selection-end-column="45" />
+              <folding>
+                <element signature="n#div#0;n#div#4;n#div#0;n#div#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="false" />
+                <element signature="n#div#1;n#div#4;n#div#0;n#div#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="false" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -385,8 +70,8 @@
       <file leaf-file-name="style.css" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/resources/css/style.css">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="657">
-              <caret line="65" column="20" selection-start-line="65" selection-start-column="20" selection-end-line="65" selection-end-column="20" />
+            <state relative-caret-position="1586">
+              <caret line="221" column="19" selection-start-line="221" selection-start-column="19" selection-end-line="221" selection-end-column="19" />
               <folding />
             </state>
           </provider>
@@ -417,8 +102,8 @@
         <option value="$PROJECT_DIR$/main.html" />
         <option value="$PROJECT_DIR$/style.css" />
         <option value="$PROJECT_DIR$/citybrowser.js" />
-        <option value="$PROJECT_DIR$/index.html" />
         <option value="$PROJECT_DIR$/resources/js/citybrowser.js" />
+        <option value="$PROJECT_DIR$/index.html" />
         <option value="$PROJECT_DIR$/resources/css/style.css" />
       </list>
     </option>
@@ -594,12 +279,12 @@
       <workItem from="1471092664192" duration="3200000" />
       <workItem from="1471118223395" duration="13148000" />
       <workItem from="1471268020490" duration="23019000" />
-      <workItem from="1471450195953" duration="13281000" />
+      <workItem from="1471450195953" duration="16351000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="110206000" />
+    <option name="totallyTimeSpent" value="113276000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="1920" y="50" width="1921" height="2111" extended-state="4" />
@@ -929,14 +614,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/us_regions.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1715">
-          <caret line="49" column="19" selection-start-line="49" selection-start-column="19" selection-end-line="49" selection-end-column="19" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/style.css">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1299">
@@ -961,26 +638,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/parser.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1796">
-          <caret line="188" column="86" selection-start-line="188" selection-start-column="86" selection-end-line="188" selection-end-column="86" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/css/sidebar.css">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="210">
           <caret line="6" column="1" selection-start-line="6" selection-start-column="1" selection-end-line="6" selection-end-column="1" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/index.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="350">
-          <caret line="10" column="27" selection-start-line="10" selection-start-column="27" selection-end-line="10" selection-end-column="27" />
           <folding />
         </state>
       </provider>
@@ -993,10 +654,37 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/parser.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1796">
+          <caret line="188" column="86" selection-start-line="188" selection-start-column="86" selection-end-line="188" selection-end-column="86" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/us_regions.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1617">
+          <caret line="49" column="19" selection-start-line="49" selection-start-column="19" selection-end-line="49" selection-end-column="19" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1099">
+          <caret line="85" column="45" selection-start-line="85" selection-start-column="45" selection-end-line="85" selection-end-column="45" />
+          <folding>
+            <element signature="n#div#0;n#div#4;n#div#0;n#div#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="false" />
+            <element signature="n#div#1;n#div#4;n#div#0;n#div#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/resources/css/style.css">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="657">
-          <caret line="65" column="20" selection-start-line="65" selection-start-column="20" selection-end-line="65" selection-end-column="20" />
+        <state relative-caret-position="1586">
+          <caret line="221" column="19" selection-start-line="221" selection-start-column="19" selection-end-line="221" selection-end-column="19" />
           <folding />
         </state>
       </provider>
