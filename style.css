@@ -47,11 +47,11 @@
     left: -13px;
 }
 
-.seasons h2, .population h2 {
+.seasons h3, .population h3 {
     margin-top: 0;
 }
 
-.seasons h2 {
+.seasons h3 {
     position: relative;
     left: -10px;
 }
@@ -75,8 +75,8 @@ li {
 }
 
 .thumb {
-    height: 200px;
-    overflow: hidden;
+    /*height: 200px;*/
+    /*overflow: hidden;*/
 }
 
 .thumb .img-responsive {
@@ -171,4 +171,12 @@ h1 {
 
 #number_buttons {
     padding-bottom: 80px;
+}
+
+#asc_desc {
+    float: left;
+}
+
+#avg_high_low {
+    clear: both;
 }

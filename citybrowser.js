@@ -106,22 +106,11 @@ function initializeSliders(cities) {
         pips: {
             mode: 'positions',
             values: [0, 20, 40, 60, 80, 100],
-            density: 2
+            density: 2,
+            format: {
+                to: formatPop
+            }
         }
-    });
-
-    pop_slider.noUiSlider.on('update', function(values, handle) {
-        var value = values[handle];
-        var low_bound = pop_slider.previousElementSibling;
-        var high_bound = pop_slider.nextElementSibling;
-        var setting_high = handle === 1;
-        if (setting_high) {
-            high_bound.textContent = Math.round(value);
-        } else {
-            low_bound.textContent = Math.round(value);
-        }
-        filters.population = [low_bound.textContent, high_bound.textContent];
-        updateList();
     });
 
     var rent_slider = $('#rent_slider')[0];
@@ -136,7 +125,10 @@ function initializeSliders(cities) {
         pips: {
             mode: 'positions',
             values: [0, 20, 40, 60, 80, 100],
-            density: 2
+            density: 2,
+            format: wNumb({
+                prefix: '$'
+            })
         }
     });
 
@@ -147,15 +139,26 @@ function initializeSliders(cities) {
             var low_bound = slider.previousElementSibling;
             var high_bound = slider.nextElementSibling;
             var setting_high = handle === 1;
-            if (setting_high) {
-                high_bound.textContent = Math.round(value);
-            } else {
-                low_bound.textContent = Math.round(value);
-            }
+
+            // Population change
             if (index === 0) {
-                filters.population = [low_bound.textContent, high_bound.textContent];
+                if (setting_high) {
+                    high_bound.textContent = formatPop(Math.round(value));
+                    filters.population[1] = Math.round(value);
+                } else {
+                    low_bound.textContent = formatPop(Math.round(value));
+                    filters.population[0] = Math.round(value);
+                }
+
+            // Rent change
             } else {
-                filters.median_2br_rent = [low_bound.textContent, high_bound.textContent];
+                if (setting_high) {
+                    high_bound.textContent = '$' + Math.round(value);
+                    filters.median_2br_rent[1] = Math.round(value);
+                } else {
+                    low_bound.textContent = '$' + Math.round(value);
+                    filters.median_2br_rent[0] = Math.round(value);
+                }
             }
             updateList();
         });
@@ -178,7 +181,31 @@ function initializeSliders(cities) {
     function updateList() {
         // console.log(cities.responseJSON);
         var list = $('.city_list');
-        var filteredCities = $.grep(cities.responseJSON, function( city, i ) {
+        var sortedCities = cities.responseJSON.slice(0);
+
+        // TODO: Make these sort
+        if (sortMode === 'Population') {
+            // Do nothing because the cities are already sorted by pop in the json
+        } else if (sortMode === 'Median rent') {
+            sortedCities.sort(function(a, b) {
+                return b.median_2br_rent - a.median_2br_rent;
+            });
+
+        } else if (sortMode === 'Average high') {
+            sortedCities.sort(function(a, b) {
+                return b.climate.mean_high.year - a.climate.mean_high.year;
+            });
+        } else if (sortMode === 'Average low') {
+            sortedCities.sort(function(a, b) {
+                return b.climate.mean_low.year - a.climate.mean_low.year;
+            });
+        }
+
+        if (!sortDescending) {
+            sortedCities.reverse();
+        }
+
+        var filteredCities = $.grep(sortedCities, function( city, i ) {
             var pass = city.population > filters.population[0] && city.population < filters.population[1]
                 && city.median_2br_rent > filters.median_2br_rent[0]
                 && city.median_2br_rent < filters.median_2br_rent[1];
@@ -192,6 +219,7 @@ function initializeSliders(cities) {
             });
             return pass;
         });
+        
         list.empty();
         $.each(filteredCities, function( i, city ) {
             var cityDiv = cityDivMap[city.id];
@@ -200,18 +228,36 @@ function initializeSliders(cities) {
         })
     }
 
-    // Set up button to allow user to change number of displayed cities
-    var group = $('#number_buttons');
+    // Set up buttons to change sorting of cities
+    var sortingButtonGroup = $('#sort_buttons');
 
+    $.each(sortingButtonGroup.children(), function(index, button) {
+       $(button).on('click', function(event) {
+           sortMode = button.textContent.trim();
+           updateList();
+       });
+    });
 
-    $.each(group.children(), function(index, btn) {
+    var ascDescGroup = $('#asc_desc');
+
+    $.each(ascDescGroup.children(), function(index, button) {
+        $(button).on('click', function(event) {
+            sortDescending = button.textContent.trim() === 'Descending';
+            updateList();
+        });
+    });
+
+    // Set up buttons to allow user to change number of displayed cities
+    var numberButtonGroup = $('#number_buttons');
+
+    $.each(numberButtonGroup.children(), function(index, btn) {
         $(btn).on('click', function(event) {
-            console.log(event);
+            // console.log(event);
             if (event.originalEvent) {
                 displayedCities = +btn.textContent;
                 updateList();
             }
-            console.log(displayedCities);
+            // console.log(displayedCities);
         });
 
     });
@@ -233,6 +279,14 @@ function initializeSliders(cities) {
 // End initialize sliders
 }
 
+function formatPop(population) {
+    if (population < 1000000) {
+        return Math.round(population/1000) + 'k';
+    } else {
+        return Math.round(population/100000)/10 + 'm';
+    }
+}
+
 function getCityDiv(city) {
     var cityLi = $('<li></li>');
     var cityDiv = $('<div></div>').addClass('row');
@@ -246,24 +300,11 @@ function getCityDiv(city) {
     var heading = $('<a target="_blank"></a>').attr('href', city.wiki);
     heading.append($('<h4></h4>').text(city.name));
     rightSection.append(heading);
-    // var table = $('<table class="table"></table>');
-    // var headings = $('<tr></tr>');
-    // headings.append($('<th>Month</th>'));
-    // headings.append($('<th>Average high</th>'));
-    // headings.append($('<th>Average low</th>'));
-    // headings.append($('<th>Average monthly max</th>'));
-    // headings.append($('<th>Average monthly min</th>'));
-    // headings.append($('<th>Precipitation</th>'));
-    // table.append(headings);
-    // $.each(['apr', 'jul', 'oct', 'jan', 'year'], function(i, month) {
-    //     var month_row = $('<tr><th>' + month + '</th></tr>');
-    //     $.each(['mean_high', 'mean_low', 'mean_max_high', 'mean_min_low', 'mean_precip'], function(i, stat) {
-    //         month_row.append($('<td>' + city.climate[stat][month] + '</td>'));
-    //     });
-    //     table.append(month_row);
-    // });
-    //
-    // rightSection.append(table);
+    leftSection.append($('<p>Population: ' + formatPop(city.population) + '</p>'));
+    leftSection.append($('<p>Median rent: $' + city.median_2br_rent + '</p>'));
+
+
+
     var wiki_info = $('<p></p>').text(city.wiki_intro);
     rightSection.append(wiki_info);
     cityDiv.append(leftSection, rightSection);
@@ -317,7 +358,8 @@ var filters = {
 };
 
 var monthAbbrMap = {'apr': 'April', 'jul': 'July', 'oct': 'October', 'jan': 'January', 'year': 'Year'};
-
+var sortMode = 'Population';
+var sortDescending = true;
 var displayedCities = 25;
 var lockUpdateInProgress;
 var cityDivMap;
