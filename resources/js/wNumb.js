@@ -1,4 +1,22 @@
-(function(){
+(function (factory) {
+
+    if ( typeof define === 'function' && define.amd ) {
+
+        // AMD. Register as an anonymous module.
+        define([], factory);
+
+    } else if ( typeof exports === 'object' ) {
+
+        // Node/CommonJS
+        module.exports = factory();
+
+    } else {
+
+        // Browser globals
+        window.wNumb = factory();
+    }
+
+}(function(){
 
 	'use strict';
 
@@ -9,6 +27,7 @@ var
 	'mark',
 	'prefix',
 	'postfix',
+	'round',
 	'encoder',
 	'decoder',
 	'negativeBefore',
@@ -56,7 +75,7 @@ var
 // Formatting
 
 	// Accept a number as input, output formatted string.
-	function formatTo ( decimals, thousand, mark, prefix, postfix, encoder, decoder, negativeBefore, negative, edit, undo, input ) {
+	function formatTo ( decimals, thousand, mark, prefix, postfix, round, encoder, decoder, negativeBefore, negative, edit, undo, input ) {
 
 		var originalInput = input, inputIsNegative, inputPieces, inputBase, inputDecimals = '', output = '';
 
@@ -82,6 +101,21 @@ var
 		if ( input < 0 ) {
 			inputIsNegative = true;
 			input = Math.abs(input);
+		}
+
+		// Round the input to the specified number
+		if ( round ) {
+			// If decimals required, round to requested number divided by
+			// 10^decimal places, then divide by 10^decimal places
+			if (decimals) {
+				var scaling = Math.pow(10, decimals);
+				input = Math.round(input / (round / scaling)) / scaling;
+			} else {
+				// If no decimal is needed, round directly
+				input = Math.round(input / round);
+			}
+
+
 		}
 
 		// Reduce the number of decimals to the specified option.
@@ -148,7 +182,7 @@ var
 	}
 
 	// Accept a sting as input, output decoded number.
-	function formatFrom ( decimals, thousand, mark, prefix, postfix, encoder, decoder, negativeBefore, negative, edit, undo, input ) {
+	function formatFrom ( decimals, thousand, mark, prefix, postfix, round, encoder, decoder, negativeBefore, negative, edit, undo, input ) {
 
 		var originalInput = input, inputIsNegative, output = '';
 
@@ -215,6 +249,10 @@ var
 		// Covert to number.
 		output = Number(output);
 
+		if ( round ) {
+			output = output * round;
+		}
+
 		// Run the user-specified post-decoder.
 		if ( decoder ) {
 			output = decoder(output);
@@ -256,7 +294,15 @@ var
 
 			// Floating points in JS are stable up to 7 decimals.
 			} else if ( optionName === 'decimals' ) {
-				if ( optionValue >= 0 && optionValue < 8 ) {
+				if (optionValue >= 0 && optionValue < 8) {
+					filteredOptions[optionName] = optionValue;
+				} else {
+					throw new Error(optionName);
+				}
+
+			// Rounding must be positive
+			} else if ( optionName === 'round' ) {
+				if ( optionValue >= 0 ) {
 					filteredOptions[optionName] = optionValue;
 				} else {
 					throw new Error(optionName);
@@ -330,6 +376,6 @@ var
 	}
 
 	/** @export */
-	window.wNumb = wNumb;
+	return wNumb;
 
-}());
+}));

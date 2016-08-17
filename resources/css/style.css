@@ -63,6 +63,7 @@
 
 h4 {
     margin: 0;
+    display: inline;
 }
 
 ul {
@@ -179,4 +180,20 @@ h1 {
 
 #avg_high_low {
     clear: both;
+}
+
+.stats_div {
+    padding-top: 10px;
+}
+
+.stats_div p {
+    margin-bottom: 3px;
+}
+
+.city_left {
+    padding: 0;
+}
+
+.small_stats {
+    padding-left: 0;
 }

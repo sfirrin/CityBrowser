@@ -271,6 +271,8 @@ function initializeSliders(cities) {
         $(obj).append($('<div>' + monthName + '</div>').addClass('slider_month'));
     });
 
+    $('#filters').scrollTop(0);
+
     // Slide out filters after page load
     setTimeout(function() {
         $('button').click();
@@ -290,20 +292,27 @@ function formatPop(population) {
 function getCityDiv(city) {
     var cityLi = $('<li></li>');
     var cityDiv = $('<div></div>').addClass('row');
-    var leftSection = $('<div></div>').addClass('col-xs-3');
+    var leftSection = $('<div></div>').addClass('col-xs-3 city_left');
     var rightSection = $('<div></div>').addClass('col-xs-9');
     var thumbLinkWrapper = $('<a target="_blank" href="' + city.photo_details_url + '"></a>');
     var thumbContainer = $('<div></div>').addClass('thumb');
-    thumbContainer.append($('<img src="city_images/' + city.id + '.jpg" />').addClass('img-responsive'));
+    thumbContainer.append($('<img src="resources/city_images/' + city.id + '.jpg" />').addClass('img-responsive'));
     thumbLinkWrapper.append(thumbContainer);
     leftSection.append(thumbLinkWrapper);
     var heading = $('<a target="_blank"></a>').attr('href', city.wiki);
     heading.append($('<h4></h4>').text(city.name));
     rightSection.append(heading);
-    leftSection.append($('<p>Population: ' + formatPop(city.population) + '</p>'));
-    leftSection.append($('<p>Median rent: $' + city.median_2br_rent + '</p>'));
 
+    var statsDiv = $('<div class="stats_div row"></div>');
 
+    statsDiv.append($('<p class="stat col-xs-12 col-sm-3"><span class="oi oi-person"></span> ' + formatPop(city.population) + '</p>'));
+    statsDiv.append($('<p class="stat col-xs-12 col-sm-3"><span class="oi oi-home"></span> $' + city.median_2br_rent + '</p>'));
+    statsDiv.append($('<p class="stat col-xs-12 col-sm-3"><span class="oi oi-sun"></span> ' + Math.round(city.climate.mean_high.year) + '°</p>'));
+    statsDiv.append($('<p class="stat col-xs-12 col-sm-3"><span class="oi oi-moon"></span> ' + Math.round(city.climate.mean_low.year) + '°</p>'));
+
+    // leftSection.append(statsDiv.clone().addClass('hidden-md hidden-lg col-xs-12 col-md-6 small_stats'));
+    rightSection.append(statsDiv.clone().addClass('large_stats hidden-xs'));
+    leftSection.append(statsDiv.addClass('hidden-sm hidden-md hidden-lg'));
 
     var wiki_info = $('<p></p>').text(city.wiki_intro);
     rightSection.append(wiki_info);
@@ -324,7 +333,7 @@ function getCityDivMap(cities) {
 
 function initializeListAndSliders() {
 
-    cities =  $.getJSON('cities.json', function(response) {
+    cities =  $.getJSON('resources/cities.json', function(response) {
         getCityDivMap(cities);
         initializeSliders(cities);
     });
