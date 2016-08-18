@@ -1,23 +1,24 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
 
     <title>City Browser</title>
 
-    <link href='https://fonts.googleapis.com/css?family=Oxygen:400,700' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Oxygen:400,700' rel='stylesheet' type='text/css' />
 
-    <link rel="stylesheet" type="text/css" href="noUiSlider.8.5.1/nouislider.min.css" />
-    <!-- Latest compiled and minified CSS -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <link rel="stylesheet" href="resources/css/open-iconic-bootstrap.min.css" />
 
-    <!-- Optional theme -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+    <link rel="stylesheet" href="resources/css/nouislider.min.css" />
 
-    <link rel="stylesheet" href="sidebar.css">
+    <link rel="stylesheet" href="resources/css/bootstrap.min.css" />
 
-    <link rel="stylesheet" type="text/css" href="style.css" />
+    <link rel="stylesheet" href="resources/css/bootstrap-theme.min.css" />
+
+    <link rel="stylesheet" href="resources/css/sidebar.css" />
+
+    <link rel="stylesheet" href="resources/css/style.css" />
 
 </head>
 <body>
@@ -30,6 +31,7 @@
                 <a class="navbar-brand" href="#">
                     City Browser
                 </a>
+                <a href="about.html" class="about_link">About</a>
             </div>
         </div>
     </div>
@@ -37,9 +39,53 @@
     <div class="container-fluid">
         <div class="row">
             <div id="filters" class="col-xs-9 col-sm-7 col-md-5 sidebar sidebar-left sidebar-animate sidebar-md-show">
-                <div class="row">
+                    <h3 id="sort_by_header">Sort by</h3>
+                    <div id="sort_buttons" class="btn-group" role="group" data-toggle="buttons">
+                        <label type="button" class="btn btn-default active" id="sort_pop" >
+                            <input type="radio" autocomplete="off" checked>Population
+                        </label>
+                        <label type="button" class="btn btn-default">
+                            <input type="radio" autocomplete="off">Median rent
+                        </label>
+                        <label type="button" class="btn btn-default">
+                            <input type="radio" autocomplete="off">Average high
+                        </label>
+                        <label type="button" class="btn btn-default">
+                            <input type="radio" autocomplete="off">Average low
+                        </label>
+                    </div>
+
+                    <div id="asc_desc" class="btn-group" role="group" data-toggle="buttons">
+                        <label type="button" class="btn btn-default" id="ascending" >
+                            <input type="radio" autocomplete="off">Ascending
+                        </label>
+                        <label type="button" class="btn btn-default active">
+                            <input type="radio" autocomplete="off" checked >Descending
+                        </label>
+                    </div>
+
+
+
+                    <div class="row population">
+                        <h3 class="col-xs-12">Population</h3>
+                        <p class="low_bound col-xs-2">100</p>
+                        <div id="pop_slider" class="col-xs-8"></div>
+                        <p class="high_bound col-xs-2">10000</p>
+                    </div>
+
+                    <div class="row rent">
+                        <h3 class="col-xs-12">Median two bedroom rent</h3>
+                        <p class="low_bound col-xs-2">100</p>
+                        <div id="rent_slider" class="col-xs-8"></div>
+                        <p class="high_bound col-xs-2">10000</p>
+                    </div>
+
+                    <br />
+                    <hr />
+
+                <div class="row temp_controls">
                     <div id="avg_high_low" class="seasons col-xs-12 col-lg-6">
-                        <h2>Average monthly highs and lows</h2>
+                        <h3>Average monthly highs and lows</h3>
                         <div class="row">
                             <div class="col-xs-2 offset-xs-2">
                                 <input type="number" value="120" min="-19" max="120" step="1" class="high_bound" />
@@ -75,7 +121,7 @@
                         </div>
                     </div>
                     <div id="extreme_high_low" class="seasons col-xs-12 col-lg-6">
-                        <h2>Average monthly maxes and mins</h2>
+                        <h3>Average monthly maxes and mins</h3>
                         <div class="row">
                             <div class="col-xs-2 offset-xs-2">
                                 <input type="number" value="120" min="-19" max="120" step="1" class="high_bound" />
@@ -111,30 +157,33 @@
                         </div>
                     </div>
                 </div>
-                <p class="month_labels">
-                    <span class="apr_label">April</span>
-                    <span class="jul_label">July</span>
-                    <span class="oct_label">October</span>
-                    <span class="jan_label">January</span>
-                    <span class="year_label">Year</span>
-                </p>
+
                 <br />
-
                 <hr />
-                <div class="row population">
-                    <h2>Population</h2>
-                    <p class="low_bound col-xs-2">100</p>
-                    <div id="pop_slider" class="col-xs-8"></div>
-                    <p class="high_bound col-xs-2">10000</p>
-                </div>
 
-                <div class="row rent">
-                    <h2>Median Two Bedroom Rent</h2>
-                    <p class="low_bound col-xs-2">100</p>
-                    <div id="rent_slider" class="col-xs-8"></div>
-                    <p class="high_bound col-xs-2">10000</p>
+                <h3>Number of cities to display</h3>
+                <p>More cities reduces performance</p>
+                <div id="number_buttons" class="btn-group" role="group" data-toggle="buttons">
+                    <label type="button" class="btn btn-default active" id="btn_25" >
+                        <input type="radio" autocomplete="off" checked>25
+                    </label>
+                    <label type="button" class="btn btn-default">
+                        <input type="radio" autocomplete="off">50
+                    </label>
+                    <label type="button" class="btn btn-default">
+                        <input type="radio" autocomplete="off">100
+                    </label>
+                    <label type="button" class="btn btn-default">
+                        <input type="radio" autocomplete="off">150
+                    </label>
+                    <label type="button" class="btn btn-default">
+                        <input type="radio" autocomplete="off">200
+                    </label>
+                    <label type="button" class="btn btn-default">
+                        <input type="radio" autocomplete="off">304
+                    </label>
                 </div>
-                <!-- End of adjusters div -->
+                <!-- End of filters div -->
             </div>
 
             <div class="cities_container main col-md-7 col-md-offset-5">
@@ -147,19 +196,17 @@
 
 
     </div>
-    <script src="jquery-3.1.0.min.js"></script>
+    <script src="resources/js/jquery-3.1.0.min.js"></script>
 
-    <!-- Latest compiled and minified JavaScript -->
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+    <script src="resources/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
 
+    <script src="resources/js/nouislider.min.js"></script>
 
-    <script src="noUiSlider.8.5.1/nouislider.min.js"></script>
+    <script src="resources/js/wNumb.js"></script>
 
-    <script src="noUiSlider.8.5.1/wNumb.js"></script>
+    <script src="resources/js/sidebar.js"></script>
 
-    <script src="sidebar.js"></script>
-
-    <script src="citybrowser.js"></script>
+    <script src="resources/js/citybrowser.js"></script>
 </body>
 
 </html>
