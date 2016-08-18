@@ -260,3 +260,7 @@ h1 {
         visibility: hidden;
     }
 }
+
+.content {
+    padding-top: 50px;
+}

@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>City Browser :: About</title>
+
+    <link href='https://fonts.googleapis.com/css?family=Oxygen:400,700' rel='stylesheet' type='text/css' />
+
+    <link rel="stylesheet" href="resources/css/bootstrap.min.css" />
+
+    <link rel="stylesheet" href="resources/css/bootstrap-theme.min.css" />
+
+    <link rel="stylesheet" href="resources/css/style.css" />
+
+</head>
+<body>
+<div class="navbar navbar-static navbar-default navbar-fixed-top">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle toggle-left hidden-md hidden-lg" data-toggle="sidebar" data-target=".sidebar-left">
+                Filters
+            </button>
+            <a class="navbar-brand" href="/">
+                City Browser
+            </a>
+            <p class="navbar-text navbar-right about_link"><a href="about.html">About</a></p>
+        </div>
+    </div>
+</div>
+
+<div class="content container">
+    <h3>About</h3>
+    <p>City Browser is a project of <a href="http://firrincieli.com">Stephen Firrincieli</a> and all the code can be seen
+        on <a href="http://github.com/sfirrin/CityBrowser">my github page</a>. I wanted a project to practice using
+        Javascript and I'm interested in places and data about them so I thought this would be fun to work on.</p>
+
+    <h3>Data sources</h3>
+    <p>
+        The data used in City Browser was taken from a few sources provided by different US government agencies.
+        I got the data into a <a href="https://github.com/sfirrin/CityBrowser/blob/gh-pages/resources/cities.json">manageable JSON</a>
+        using web scraping in some cases and by processing data files in others. The code for generating the JSON was
+        written in Python and can also be found at <a href="#">UPDATE THIS TO SHOW PYTHON PROJECT</a>.
+    </p>
+
+    <table class="table">
+        <tr>
+            <th>Data</th>
+            <th>Source</th>
+            <th>Format</th>
+            <th>Links</th>
+            <th>Information</th>
+        </tr>
+        <tr>
+            <td>Climate</td>
+            <td><a href="http://www.noaa.gov/about-our-agency">NOAA</a></td>
+            <td>Text files</td>
+            <td>
+                <a href="ftp://ftp.ncdc.noaa.gov/pub/data/normals/1981-2010/products/temperature/">Climate normals</a><br />
+                <a href="ftp://ftp.ncdc.noaa.gov/pub/data/ghcn/daily/">Daily summaries</a></td>
+            <td>
+                NOAA provides climate data for each station it keeps track of in text files. First, the script determined the nearest
+                station to the coordinates of the city on Wikipedia. NOAA provides pre-calculated data on the monthly normal (mean)
+                highs and lows for each station over a 30-year period. To determine the mean maximum and minimum temperatures,
+                the script read the daily weather for each station for as long as it has been available, and averaged each
+                month's maximums and minimums over all the available years.
+            </td>
+        </tr>
+        <tr>
+            <td>Population</td>
+            <td>Wikipedia via U.S. Census Bureau</td>
+            <td>HTML</td>
+            <td>
+                <a href="https://en.wikipedia.org/wiki/List_of_United_States_cities_by_population">Wikipedia</a><br />
+                <a href="http://factfinder.census.gov/faces/tableservices/jsf/pages/productview.xhtml?src=bkmk">2015 Population Estimates</a>
+            </td>
+            <td>
+                The U.S. Census Bureau makes estimates of the current year's population for each city in between census years.
+                The Census Bureau's website was difficult to scrape data from so I scraped the equivalent 2015 data from the
+                Wikipedia page.
+            </td>
+        </tr>
+        <tr>
+            <td>Median rent</td>
+            <td><a href="https://www.huduser.gov/portal/about/pdrabout.html">Office of Policy Development and Research </a></td>
+            <td>Spreadsheet</td>
+            <td><a href="https://www.huduser.gov/portal/datasets/50per.html">50th Percentile Rent Estimates</a></td>
+            <td>
+                An office of the U.S. Department of Housing and Urban Development, the Office of Policy Development and Research
+                produces yearly estimates of the median rent for areas of the United States. The script would first
+                search the spreadsheet for the name and state of the city. If it could not find the specific city, it would
+                fall back to use the county the city is within.
+            </td>
+        </tr>
+    </table>
+
+
+</div>
+
+
+
+<script src="resources/js/jquery-3.1.0.min.js"></script>
+
+<script src="resources/js/bootstrap.min.js"></script>
+</body>
+
+</html>
