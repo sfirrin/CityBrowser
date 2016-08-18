@@ -15,7 +15,10 @@ function initializeSliders(cities) {
                 pips: { // Show a scale with the slider
                     mode: 'values',
                     values: [-20, 0, 20, 40, 60, 80, 100, 120],
-                    density: 2
+                    density: 2,
+                    format: wNumb({
+                        postfix: '°'
+                    })
                 }
             });
         } else {
@@ -105,7 +108,7 @@ function initializeSliders(cities) {
         step: 5000,
         pips: {
             mode: 'positions',
-            values: [0, 20, 40, 60, 80, 100],
+            values: [0, 25, 50, 75, 100],
             density: 2,
             format: {
                 to: formatPop
@@ -124,7 +127,7 @@ function initializeSliders(cities) {
         step: 20,
         pips: {
             mode: 'positions',
-            values: [0, 20, 40, 60, 80, 100],
+            values: [0, 25, 50, 75, 100],
             density: 2,
             format: wNumb({
                 prefix: '$'
@@ -276,7 +279,7 @@ function initializeSliders(cities) {
     // Slide out filters after page load
     setTimeout(function() {
         $('button').click();
-    }, 350);
+    }, 750);
 
 // End initialize sliders
 }

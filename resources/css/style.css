@@ -144,20 +144,22 @@ h1 {
     width: 100%;
 }
 
-.navbar-brand {
+.navbar-default .navbar-brand {
     float:none;
     position: relative;
     top: 15px;
     font-size: 2em;
+    color: #333;
 }
 
 .about_link {
     font-size: 1.1em;
-    position: relative;
-    top: 13px;
-    left: 12px;
     float: right;
-    margin-right: 15px;
+    /*position: relative;*/
+    /*top: 13px;*/
+    /*left: 12px;*/
+    /*float: right;*/
+    /*margin-right: 15px;*/
 }
 
 .slider_month {
@@ -220,4 +222,41 @@ h1 {
 
 .rent .high_bound, .population .high_bound {
     padding-left: 4px;
+}
+
+@media (min-width: 768px) {
+    .navbar-right {
+        float: right!important;
+        margin-right: 15px;
+    }
+}
+
+.noUi-value-vertical {
+    padding-left: 20px;
+}
+
+.navbar-default {
+    -webkit-box-shadow: none;
+    box-shadow: none;
+    border-color: #B6D3E7;
+}
+
+.sidebar {
+    top: 54px;
+}
+
+.navbar-text {
+    margin-top: 17px;
+}
+
+#sort_buttons .btn, #asc_desc .btn {
+    margin-top: 5px;
+    width: 108px;
+}
+
+@media (min-width: 992px) {
+    .navbar-toggle {
+        display: block;
+        visibility: hidden;
+    }
 }
