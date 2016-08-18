@@ -19,7 +19,7 @@
 <div class="navbar navbar-static navbar-default navbar-fixed-top">
     <div class="container-fluid">
         <div class="navbar-header">
-            <button type="button" class="navbar-toggle toggle-left hidden-md hidden-lg" data-toggle="sidebar" data-target=".sidebar-left">
+            <button type="button" class="navbar-toggle toggle-left visibility_hidden navbar-left" data-toggle="sidebar" data-target=".sidebar-left">
                 Filters
             </button>
             <a class="navbar-brand" href="/">
@@ -32,19 +32,18 @@
 
 <div class="content container">
     <h3>About</h3>
-    <p>City Browser is a project of <a href="http://firrincieli.com">Stephen Firrincieli</a> and all the code can be seen
-        on <a href="http://github.com/sfirrin/CityBrowser">my github page</a>. I wanted a project to practice using
-        Javascript and I'm interested in places and data about them so I thought this would be fun to work on.</p>
+    <p>City Browser is a project of <a href="http://firrincieli.com">Stephen Firrincieli</a> . The code is released under
+        the MIT license and can be found <a href="http://github.com/sfirrin/CityBrowser">on GitHub</a>.</p>
 
     <h3>Data sources</h3>
     <p>
         The data used in City Browser was taken from a few sources provided by different US government agencies.
-        I got the data into a <a href="https://github.com/sfirrin/CityBrowser/blob/gh-pages/resources/cities.json">manageable JSON</a>
-        using web scraping in some cases and by processing data files in others. The code for generating the JSON was
+        I put the data into a <a href="https://github.com/sfirrin/CityBrowser/blob/gh-pages/resources/cities.json">manageable JSON</a>
+        using web scraping and by processing data files. The code for generating the JSON was
         written in Python and can also be found at <a href="#">UPDATE THIS TO SHOW PYTHON PROJECT</a>.
     </p>
 
-    <table class="table">
+    <table class="table table-responsive">
         <tr>
             <th>Data</th>
             <th>Source</th>
@@ -95,6 +94,21 @@
         </tr>
     </table>
 
+    <h3>Acknowledgements</h3>
+    <ul>
+        <li>A huge thanks to NOAA, the U.S. Census Bureau, and the Office of Policy Development and Research for making this data available to the public</li>
+        <li>The users and editors of Wikipedia for contributing the intro paragraphs about each city and the thumbnail images used here</li>
+        <li>
+            The developers of the following projects which made it possible for me to put this together:
+            <ul>
+                <li>Bootstrap</li>
+                <li>noUiSlider</li>
+                <li>Bootstrap Sidebar</li>
+                <li>Open Iconic</li>
+                <li>jQuery</li>
+            </ul>
+        </li>
+    </ul>
 
 </div>
 
