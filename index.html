@@ -28,10 +28,10 @@
                 <button type="button" class="navbar-toggle toggle-left hidden-md hidden-lg" data-toggle="sidebar" data-target=".sidebar-left">
                     Filters
                 </button>
-                <a class="navbar-brand" href="#">
+                <a class="navbar-brand" href="/">
                     City Browser
                 </a>
-                <a href="about.html" class="about_link">About</a>
+                <p class="navbar-text navbar-right about_link"><a href="about.html">About</a></p>
             </div>
         </div>
     </div>
@@ -40,7 +40,7 @@
         <div class="row">
             <div id="filters" class="col-xs-9 col-sm-7 col-md-5 sidebar sidebar-left sidebar-animate sidebar-md-show">
                     <h3 id="sort_by_header">Sort by</h3>
-                    <div id="sort_buttons" class="btn-group" role="group" data-toggle="buttons">
+                    <div id="sort_buttons" class="btn-toolbar" role="group" data-toggle="buttons">
                         <label type="button" class="btn btn-default active" id="sort_pop" >
                             <input type="radio" autocomplete="off" checked>Population
                         </label>
@@ -55,7 +55,7 @@
                         </label>
                     </div>
 
-                    <div id="asc_desc" class="btn-group" role="group" data-toggle="buttons">
+                    <div id="asc_desc" class="btn-toolbar" role="group" data-toggle="buttons">
                         <label type="button" class="btn btn-default" id="ascending" >
                             <input type="radio" autocomplete="off">Ascending
                         </label>
@@ -84,7 +84,7 @@
                     <hr />
 
                 <div class="row temp_controls">
-                    <div id="avg_high_low" class="seasons col-xs-12 col-lg-6">
+                    <div id="avg_high_low" class="seasons col-xs-12 col-sm-10 col-lg-6">
                         <h3>Average monthly highs and lows</h3>
                         <div class="row">
                             <div class="col-xs-2 offset-xs-2">
@@ -120,7 +120,7 @@
                             </div>
                         </div>
                     </div>
-                    <div id="extreme_high_low" class="seasons col-xs-12 col-lg-6">
+                    <div id="extreme_high_low" class="seasons col-xs-12 col-sm-10 col-lg-6">
                         <h3>Average monthly maxes and mins</h3>
                         <div class="row">
                             <div class="col-xs-2 offset-xs-2">
